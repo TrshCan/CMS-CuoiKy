@@ -2598,6 +2598,7 @@ section.top-job-section .section-title {
     display: flex;
     width: 100%;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .top-job-section .row div.job_listings article .company-logo {
@@ -2733,7 +2734,8 @@ section.top-job-section .section-title {
     font-size: 0.8888em;
     color: #000;
     line-height: 1.5em;
-    margin-top: 0;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .top-job-section .row div.job_listings article .job-short-description ul {
@@ -2866,33 +2868,26 @@ section.top-job-section .section-title {
     font-size: 0.8888em;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: #2ace5e;
+    background: transparent;
     border-radius: 5px;
-    color: #fff;
-    padding: 12px 20px 12px 45px;
-    border: 1px solid #2ace5e;
+    color: #EA751E;
+    padding: 12px 20px;
+    border: 1px solid #EA751E;
     position: relative;
 }
 
 .top-job-section div.job_listings .load_more_jobs:hover {
-    color: #2ace5e;
-    background: none;
+    color: #EA751E;
+    background: transparent;
+    border-color: #EA751E;
 }
 
 .top-job-section div.job_listings .load_more_jobs::before {
-    content: "";
-    background-image: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23fff" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>');
-    background-repeat: no-repeat;
-    width: 11px;
-    height: 12px;
-    position: absolute;
-    top: 17px;
-    left: 20px;
+    display: none;
 }
 
 .top-job-section div.job_listings .load_more_jobs:hover::before {
-    content: "";
-    background-image: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%232ace5e" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>');
+    display: none;
 }
 
 .top-job-section div.job_listings .load_more_jobs strong {
@@ -5797,12 +5792,12 @@ JOB LISTING PAGE
 
 div.job_listings .load_more_jobs {
     display: table;
-    border: 1px solid #2ace5e;
+    border: 1px solid #EA751E;
     text-transform: uppercase;
     font-size: 0.7778em;
     font-weight: 400;
-    background: #2ace5e;
-    color: #fff;
+    background: transparent;
+    color: #EA751E;
     padding: 15px 20px;
     margin-top: 40px;
     margin-left: auto;
@@ -5812,9 +5807,9 @@ div.job_listings .load_more_jobs {
 
 div.job_listings .load_more_jobs:hover,
 div.job_listings .load_more_jobs:focus {
-    background: none;
-    color: #2ace5e;
-    border-bottom-color: #2ace5e;
+    background: transparent;
+    color: #EA751E;
+    border-color: #EA751E;
 }
 
 .site-main .job_listings .jobscout_job_filters {

@@ -89,56 +89,56 @@ $created_date = get_the_date( 'M d, Y' );
 					<span class="recruit-area-item"><?php echo esc_html( $job_location ); ?></span>
 				<?php } ?>
 			</div>
-			
-			<?php if ( $job_description ) { ?>
-				<div class="job-short-description">
-					<?php 
-					// Check if description already has bullet points or line breaks
-					if ( strpos( $job_description, "\n" ) !== false || strpos( $job_description, "\r" ) !== false ) {
-						// Has line breaks, split by them
-						$description_lines = preg_split( '/[\r\n]+/', $job_description );
+		</div>
+
+		<?php if ( $job_description ) { ?>
+			<div class="job-short-description">
+				<?php 
+				// Check if description already has bullet points or line breaks
+				if ( strpos( $job_description, "\n" ) !== false || strpos( $job_description, "\r" ) !== false ) {
+					// Has line breaks, split by them
+					$description_lines = preg_split( '/[\r\n]+/', $job_description );
+					echo '<ul>';
+					foreach ( $description_lines as $line ) {
+						$line = trim( $line );
+						// Remove existing bullets or dashes
+						$line = preg_replace( '/^[•\-\*]\s*/', '', $line );
+						if ( ! empty( $line ) ) {
+							echo '<li>' . esc_html( $line ) . '</li>';
+						}
+					}
+					echo '</ul>';
+				} elseif ( strpos( $job_description, '•' ) !== false || ( strpos( $job_description, '-' ) !== false && substr_count( $job_description, '-' ) > 1 ) ) {
+					// Has bullet points or multiple dashes
+					$lines = preg_split( '/[•\-\*]\s+/', $job_description );
+					echo '<ul>';
+					foreach ( $lines as $line ) {
+						$line = trim( $line );
+						if ( ! empty( $line ) ) {
+							echo '<li>' . esc_html( $line ) . '</li>';
+						}
+					}
+					echo '</ul>';
+				} else {
+					// Try to split by sentences if multiple sentences exist
+					$description_lines = preg_split( '/[\.\!?]\s+/', $job_description );
+					if ( count( $description_lines ) > 1 && strlen( $job_description ) > 100 ) {
 						echo '<ul>';
 						foreach ( $description_lines as $line ) {
 							$line = trim( $line );
-							// Remove existing bullets or dashes
-							$line = preg_replace( '/^[•\-\*]\s*/', '', $line );
-							if ( ! empty( $line ) ) {
-								echo '<li>' . esc_html( $line ) . '</li>';
-							}
-						}
-						echo '</ul>';
-					} elseif ( strpos( $job_description, '•' ) !== false || ( strpos( $job_description, '-' ) !== false && substr_count( $job_description, '-' ) > 1 ) ) {
-						// Has bullet points or multiple dashes
-						$lines = preg_split( '/[•\-\*]\s+/', $job_description );
-						echo '<ul>';
-						foreach ( $lines as $line ) {
-							$line = trim( $line );
-							if ( ! empty( $line ) ) {
+							if ( ! empty( $line ) && strlen( $line ) > 10 ) {
 								echo '<li>' . esc_html( $line ) . '</li>';
 							}
 						}
 						echo '</ul>';
 					} else {
-						// Try to split by sentences if multiple sentences exist
-						$description_lines = preg_split( '/[\.!?]\s+/', $job_description );
-						if ( count( $description_lines ) > 1 && strlen( $job_description ) > 100 ) {
-							echo '<ul>';
-							foreach ( $description_lines as $line ) {
-								$line = trim( $line );
-								if ( ! empty( $line ) && strlen( $line ) > 10 ) {
-									echo '<li>' . esc_html( $line ) . '</li>';
-								}
-							}
-							echo '</ul>';
-						} else {
-							// Single sentence or short description
-							echo '<ul><li>' . esc_html( $job_description ) . '</li></ul>';
-						}
+						// Single sentence or short description
+						echo '<ul><li>' . esc_html( $job_description ) . '</li></ul>';
 					}
-					?>
-				</div>
-			<?php } ?>
-		</div>
+				}
+				?>
+			</div>
+		<?php } ?>
 	</div>
 
 	<?php if( $job_featured ){ ?>
