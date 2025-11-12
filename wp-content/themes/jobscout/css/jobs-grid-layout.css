@@ -1,0 +1,534 @@
+/* ============================================
+   Jobs Page - 2 Column Grid Layout (giống ảnh)
+   CHỈ áp dụng cho phần hiển thị job listings
+   ============================================ */
+
+/* Form job_filters - Đảm bảo nằm TRÊN job listings (order: -1 để luôn ở trên) */
+html body .site-main .entry-content .job_filters,
+html body .site-main .entry-content form.job_filters,
+html body .site-main .entry-content > .job_filters,
+html body .site-main .entry-content > form.job_filters,
+html body #main .entry-content .job_filters,
+html body #main .entry-content form.job_filters,
+html body #main .entry-content > .job_filters,
+html body #main .entry-content > form.job_filters,
+html body #content .entry-content .job_filters,
+html body #content .entry-content form.job_filters,
+html body #content .entry-content > .job_filters,
+html body #content .entry-content > form.job_filters {
+    order: 1 !important;
+    margin-bottom: 40px !important;
+    padding: 35px 40px !important;
+    background: #f8f8f8 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+    box-sizing: border-box !important;
+}
+
+/* Styling cho các phần tử trong form job_filters */
+html body .site-main .entry-content .job_filters .search_jobs,
+html body .site-main .entry-content form.job_filters .search_jobs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+
+html body .site-main .entry-content .job_filters .search_keywords,
+html body .site-main .entry-content .job_filters .search_location,
+html body .site-main .entry-content form.job_filters .search_keywords,
+html body .site-main .entry-content form.job_filters .search_location {
+    flex: 1 1 280px !important;
+    min-width: 280px !important;
+    max-width: none !important;
+}
+
+/* Input fields trong form filter - rộng hơn */
+html body .site-main .entry-content .job_filters input[type="text"],
+html body .site-main .entry-content form.job_filters input[type="text"],
+html body .site-main .entry-content .job_filters .search_keywords input,
+html body .site-main .entry-content .job_filters .search_location input,
+html body .site-main .entry-content form.job_filters .search_keywords input,
+html body .site-main .entry-content form.job_filters .search_location input,
+html body .site-main .entry-content .job_filters .search_keywords input[type="text"],
+html body .site-main .entry-content .job_filters .search_location input[type="text"],
+html body .site-main .entry-content form.job_filters .search_keywords input[type="text"],
+html body .site-main .entry-content form.job_filters .search_location input[type="text"] {
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 12px 15px !important;
+    font-size: 1em !important;
+    box-sizing: border-box !important;
+}
+
+/* Select fields trong form filter */
+html body .site-main .entry-content .job_filters select,
+html body .site-main .entry-content form.job_filters select,
+html body .site-main .entry-content .job_filters .search_location select,
+html body .site-main .entry-content form.job_filters .search_location select {
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 12px 15px !important;
+    font-size: 1em !important;
+    box-sizing: border-box !important;
+}
+
+html body .site-main .entry-content .job_filters .search_remote_position,
+html body .site-main .entry-content form.job_filters .search_remote_position {
+    flex: 1 1 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+html body .site-main .entry-content .job_filters .search_submit,
+html body .site-main .entry-content form.job_filters .search_submit {
+    flex: 0 0 auto !important;
+    margin-top: 0 !important;
+    min-width: 120px !important;
+    padding: 12px 30px !important;
+}
+
+html body .site-main .entry-content .job_filters .job_types,
+html body .site-main .entry-content form.job_filters .job_types {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    list-style: none !important;
+    margin: 20px 0 0 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+html body .site-main .entry-content .job_filters .job_types li,
+html body .site-main .entry-content form.job_filters .job_types li {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Tăng chiều rộng container cho job listings page - thêm 200px */
+html body .site-content .container:has(.job_listings),
+html body .site-content .container:has(.job_filters),
+html body .site-content:has(.job_listings) .container,
+html body .site-content:has(.job_filters) .container {
+    max-width: 1500px !important; /* 1170px + 200px */
+}
+
+/* Fallback cho trình duyệt không hỗ trợ :has() */
+html body .site-content .container {
+    max-width: 1370px !important;
+}
+
+/* Đảm bảo entry-content sử dụng flexbox để sắp xếp form và listings */
+html body .site-main .entry-content,
+html body #main .entry-content,
+html body #content .entry-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    max-width: 100% !important;
+}
+
+/* XÓA rule này vì nó override order của form và listings */
+/* Chỉ set order mặc định cho các phần tử khác (không phải form và listings) */
+html body .site-main .entry-content > *:not(.job_filters):not(form.job_filters):not(.job_listings):not(div.job_listings):not(.load_more_jobs),
+html body #main .entry-content > *:not(.job_filters):not(form.job_filters):not(.job_listings):not(div.job_listings):not(.load_more_jobs),
+html body #content .entry-content > *:not(.job_filters):not(form.job_filters):not(.job_listings):not(div.job_listings):not(.load_more_jobs) {
+    order: 0 !important;
+}
+
+/* Container job_listings - Grid 2 cột - CHỈ cho job listings trong entry-content */
+/* Nằm Ở GIỮA form filter và load more button (order: 1) */
+html body .site-main .entry-content .job_listings,
+html body .site-main .entry-content div.job_listings,
+html body .site-main .entry-content div.job_listings div.job_listings,
+html body #main .entry-content .job_listings,
+html body #main .entry-content div.job_listings,
+html body #content .entry-content .job_listings {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 50px !important; /* Giảm gap từ 30px xuống 20px để cards rộng hơn */
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    order: 1 !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+}
+
+/* CHỈ áp dụng cho job_listings trong main content, không ảnh hưởng widget/sidebar */
+html body .entry-content > .job_listings,
+html body #main .entry-content > .job_listings,
+html body #content .entry-content > .job_listings {
+    display: grid !important;
+    order: 0 !important;
+}
+
+/* Override CSS cũ - đảm bảo không dùng flex */
+html body .site-main .entry-content div.job_listings div.job_listings {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important; /* Giảm gap từ 30px xuống 20px */
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article {
+    margin-bottom: 0 !important;
+    flex: none !important;
+    flex-wrap: nowrap !important;
+}
+
+/* Mỗi job card - CHỈ trong entry-content, không ảnh hưởng các phần khác */
+/* Layout ngang: rộng hơn, thấp hơn - Logo bên trái, nội dung bên phải */
+html body .site-main .entry-content div.job_listings div.job_listings article.job_listing,
+html body .site-main .entry-content .job_listings article.job_listing,
+html body .site-main .entry-content div.job_listings article.job_listing,
+html body #main .entry-content .job_listings article.job_listing,
+html body #main .entry-content div.job_listings article.job_listing,
+html body #content .entry-content .job_listings article.job_listing {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    background: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    padding: 25px 30px !important; /* Giảm padding vertical, tăng horizontal */
+    position: relative;
+    display: flex !important;
+    flex-direction: row !important; /* Thay đổi từ column sang row */
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important; /* Căn trên */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease;
+    overflow: visible !important;
+    float: none !important;
+    min-height: auto !important;
+    gap: 25px !important; /* Khoảng cách giữa logo và nội dung */
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article.job_listing:hover,
+html body .site-main .entry-content .job_listings article.job_listing:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-2px);
+}
+
+/* Company logo - bên trái - CHỈ trong entry-content */
+html body .site-main .entry-content div.job_listings div.job_listings article .company-logo,
+html body .site-main .entry-content .job_listings article .company-logo {
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+    height: 120px !important;
+    margin: 0 !important;
+    padding: 15px !important;
+    background: #f8f8f8 !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .company-logo img.company_logo,
+html body .site-main .entry-content .job_listings article .company-logo img.company_logo {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* Job title wrap - bên phải logo - Layout dọc, căn trái - CHỈ trong entry-content */
+html body .site-main .entry-content div.job_listings div.job_listings article .job-title-wrap,
+html body .site-main .entry-content .job_listings article .job-title-wrap {
+    width: 100% !important;
+    flex: 1 !important;
+    padding-left: 0 !important;
+    text-align: left !important; /* Căn trái cho title và tags */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Căn trái */
+    margin-top: 0 !important;
+    justify-content: flex-start !important;
+    min-width: 0 !important;
+}
+
+/* Job title - CHỈ trong entry-content - Căn trái */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-title,
+html body .site-main .entry-content .job_listings article .entry-title {
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    font-size: 1.2em !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important;
+    text-align: left !important; /* Căn trái */
+    width: 100% !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    color: #333 !important;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-title a,
+html body .site-main .entry-content .job_listings article .entry-title a {
+    color: #333 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-title a:hover,
+html body .site-main .entry-content .job_listings article .entry-title a:hover {
+    color: #2ace5e !important;
+}
+
+/* Company name - CHỈ trong entry-content - Căn trái */
+html body .site-main .entry-content div.job_listings div.job_listings article .company-name,
+html body .site-main .entry-content .job_listings article .company-name {
+    font-size: 0.9em !important;
+    color: #999 !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    margin: 0 0 15px 0 !important;
+    text-align: left !important; /* Căn trái */
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .company-name::before,
+html body .site-main .entry-content .job_listings article .company-name::before {
+    content: "" !important;
+}
+
+/* Entry meta - date, location, category - CHỈ trong entry-content */
+/* Layout dọc: Job types tags (căn trái, ngang) -> Separator -> Salary/Address (dọc) */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta,
+html body .site-main .entry-content .job_listings article .entry-meta {
+    width: 100% !important;
+    margin-top: 15px !important;
+    display: flex !important;
+    flex-direction: column !important; /* Layout dọc */
+    flex-wrap: wrap !important;
+    gap: 0 !important;
+    align-items: flex-start !important; /* Căn trái cho tags */
+    font-size: 0.9em !important;
+    position: relative !important;
+}
+
+/* Separator line - sau job types tags, trước salary/address - như ảnh */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta::after {
+    content: "" !important;
+    display: block !important;
+    width: 100% !important;
+    height: 1px !important;
+    background: #e0e0e0 !important;
+    margin: 18px 0 18px 0 !important;
+    order: 1 !important;
+}
+
+/* Đảm bảo các phần tử trong entry-meta hiển thị đúng - CHỈ trong entry-content */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta > div,
+html body .site-main .entry-content .job_listings article .entry-meta > div {
+    width: 100% !important;
+    align-self: flex-start !important; /* Căn trái cho salary/address */
+    order: 2 !important; /* Sau separator */
+}
+
+/* Salary amount - CHỈ trong entry-content - Layout dọc, căn trái */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt,
+html body .site-main .entry-content .job_listings article .entry-meta .salary-amt {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 0.95em !important;
+    color: #555 !important;
+    margin-bottom: 8px !important;
+    margin-right: 0 !important;
+    line-height: 1.6 !important;
+    order: 2 !important;
+    align-self: flex-start !important; /* Căn trái */
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt .currency,
+html body .site-main .entry-content .job_listings article .entry-meta .salary-amt .currency {
+    color: #2ace5e !important;
+    margin-right: 6px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt .currency svg,
+html body .site-main .entry-content .job_listings article .entry-meta .salary-amt .currency svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt .salary,
+html body .site-main .entry-content .job_listings article .entry-meta .salary-amt .salary {
+    color: #555 !important;
+}
+
+/* Company address - CHỈ trong entry-content - Layout dọc, căn trái */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address,
+html body .site-main .entry-content .job_listings article .entry-meta .company-address {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 0.95em !important;
+    color: #555 !important;
+    margin-bottom: 8px !important;
+    margin-right: 0 !important;
+    line-height: 1.6 !important;
+    order: 2 !important;
+    align-self: flex-start !important; /* Căn trái */
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address svg,
+html body .site-main .entry-content .job_listings article .entry-meta .company-address svg {
+    color: #2ace5e !important;
+    margin-right: 8px !important;
+    width: 14px !important;
+    height: 14px !important;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address a.google_map_link,
+html body .site-main .entry-content .job_listings article .entry-meta .company-address a.google_map_link {
+    color: #555 !important;
+    text-decoration: none !important;
+}
+
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address a.google_map_link:hover,
+html body .site-main .entry-content .job_listings article .entry-meta .company-address a.google_map_link:hover {
+    color: #2ace5e !important;
+}
+
+/* Job type badge - CHỈ trong entry-content - Căn trái, ngang */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .job-type,
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta li.job-type,
+html body .site-main .entry-content .job_listings article .entry-meta .job-type,
+html body .site-main .entry-content .job_listings article .entry-meta li.job-type {
+    margin: 0 4px 15px 0 !important; /* Bỏ margin phải, chỉ giữ margin dưới */
+    display: inline-block !important;
+    align-self: flex-start !important; /* Căn trái */
+    width: auto !important;
+    list-style: none !important;
+    font-size: 0.75em !important;
+    text-transform: none !important;
+    letter-spacing: 0.3px !important;
+    font-weight: 400 !important;
+    border: none !important;
+    border-radius: 15px !important;
+    padding: 6px 12px !important;
+    color: #555 !important;
+    background: #f0f0f0 !important;
+    order: 0 !important; /* Trước separator */
+}
+
+/* Salary và address - layout dọc, căn trái, sau separator */
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt,
+html body .site-main .entry-content .job_listings article .entry-meta .salary-amt,
+html body .site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address,
+html body .site-main .entry-content .job_listings article .entry-meta .company-address {
+    order: 2 !important; /* Sau separator */
+    align-self: flex-start !important; /* Căn trái */
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Load more button styling - CHỈ trong entry-content - Nằm DƯỚI job listings */
+html body .entry-content .load_more_jobs,
+html body .entry-content > .load_more_jobs,
+html body .site-main .entry-content .load_more_jobs,
+html body .site-main .entry-content > .load_more_jobs,
+html body .site-main .entry-content .job_listings + .load_more_jobs,
+html body #main .entry-content .load_more_jobs,
+html body #main .entry-content > .load_more_jobs,
+html body #content .entry-content .load_more_jobs,
+html body #content .entry-content > .load_more_jobs {
+    order: 1 !important;
+    text-align: center !important;
+    margin: 40px auto 0 !important;
+    display: block !important;
+    width: fit-content !important;
+    padding: 12px 30px !important;
+    background: #2ace5e !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    clear: both !important;
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+html body .entry-content .load_more_jobs:hover,
+html body .site-main .entry-content .load_more_jobs:hover,
+html body .site-main .entry-content .job_listings + .load_more_jobs:hover,
+html body #main .entry-content .load_more_jobs:hover,
+html body #content .entry-content .load_more_jobs:hover {
+    background: #25b350 !important;
+    transform: translateY(-2px) !important;
+    color: #fff !important;
+}
+
+html body .entry-content .load_more_jobs strong,
+html body .site-main .entry-content .load_more_jobs strong,
+html body .site-main .entry-content .job_listings + .load_more_jobs strong,
+html body #main .entry-content .load_more_jobs strong,
+html body #content .entry-content .load_more_jobs strong {
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+/* Responsive - Tablet: 2 cột giữ nguyên - CHỈ trong entry-content */
+@media (max-width: 1024px) {
+    html body .site-main .entry-content .job_listings,
+    html body .site-main .entry-content div.job_listings,
+    html body .site-main .entry-content div.job_listings div.job_listings,
+    html body #main .entry-content .job_listings,
+    html body #main .entry-content div.job_listings,
+    html body #content .entry-content .job_listings {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 18px !important; /* Giảm gap cho tablet */
+    }
+}
+
+/* Responsive - Mobile: 1 cột - CHỈ trong entry-content */
+@media (max-width: 768px) {
+    html body .site-main .entry-content .job_listings,
+    html body .site-main .entry-content div.job_listings,
+    html body .site-main .entry-content div.job_listings div.job_listings,
+    html body #main .entry-content .job_listings,
+    html body #main .entry-content div.job_listings,
+    html body #content .entry-content .job_listings {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important; /* Giảm gap cho mobile */
+    }
+    
+    html body .site-main .entry-content div.job_listings div.job_listings article.job_listing,
+    html body .site-main .entry-content .job_listings article.job_listing {
+        padding: 25px 20px !important; /* Tăng padding cho mobile */
+    }
+    
+    html body .site-main .entry-content div.job_listings div.job_listings article .company-logo,
+    html body .site-main .entry-content .job_listings article .company-logo {
+        max-width: 100px !important;
+        height: 70px !important;
+    }
+    
+    html body .site-main .entry-content div.job_listings div.job_listings article .entry-title,
+    html body .site-main .entry-content .job_listings article .entry-title {
+        font-size: 1em !important;
+    }
+}
