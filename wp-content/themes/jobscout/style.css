@@ -2565,38 +2565,72 @@ section.top-job-section {
 
 section.top-job-section .section-title {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
 }
 
+/* Grid layout 2 cột cho job listings */
 .top-job-section .row .job_listings .job_listings {
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .top-job-section .row div.job_listings article {
-    width: 48%;
+    width: 100%;
     background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    margin-right: 2.5%;
-    margin-bottom: 3%;
-    border-radius: 5px;
+    border: none;
+    margin: 0;
+    margin-bottom: 0;
+    border-radius: 8px;
     padding: 30px;
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     align-items: flex-start;
-    overflow: hidden;
+    overflow: visible;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.top-job-section .row div.job_listings article:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
 .top-job-section .row div.job_listings article:nth-child(2n) {
     margin-right: 0;
 }
 
+/* Logo box trắng bên trái */
 .top-job-section .row div.job_listings article .company-logo {
-    width: 100px;
+    width: 120px;
+    min-width: 120px;
+    height: 120px;
     margin: 0;
-    background: #eeeeee;
+    margin-right: 25px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.top-job-section .row div.job_listings article .company-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .featured-label {
@@ -2617,51 +2651,120 @@ section.top-job-section .section-title {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
+    z-index: 10;
 }
 
+/* Job title wrap - bên phải logo */
 .top-job-section .row div.job_listings article .job-title-wrap {
-    width: calc(100% - 100px);
-    padding-left: 20px;
+    width: 100%;
+    flex: 1;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
+/* Job title - lớn, bold, uppercase */
 .top-job-section .row div.job_listings article .entry-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-right: 30px;
-    font-size: 1.1112em;
-    line-height: 1.45em;
+    margin: 0 0 12px 0;
+    padding: 0;
+    font-size: 1.4em;
+    line-height: 1.3;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+.top-job-section .row div.job_listings article .entry-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.top-job-section .row div.job_listings article .entry-title a:hover {
+    color: #ff6600;
+}
+
+/* Created date - nếu có */
+.top-job-section .row div.job_listings article .job-created-date {
+    font-size: 0.85em;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+/* Company name */
 .top-job-section .row div.job_listings article .company-name {
-    font-size: 0.8888em;
-    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9em;
+    color: #999;
     font-weight: 400;
-    line-height: 1.44em;
-    margin-top: 5px;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
 }
 
 .top-job-section .row div.job_listings article .company-name::before {
-    content: "@";
+    content: "";
 }
 
+/* Entry meta - chứa tags và thông tin khác */
 .top-job-section .row div.job_listings article .entry-meta {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e0e0e0;
     margin-top: 15px;
     padding-top: 15px;
-    font-size: 1em;
+    font-size: 0.9em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Job type tags - màu xám */
+.top-job-section .row div.job_listings article .entry-meta li.job-type,
+.top-job-section .row div.job_listings article .entry-meta .job-type {
+    list-style: none;
+    font-size: 0.75em;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+    display: inline-block;
+    border: none;
+    border-radius: 15px;
+    padding: 6px 12px;
+    color: #555;
+    background: #f0f0f0;
+    margin: 0 4px 0 0;
+    cursor: default;
+}
+
+/* Job description list - bulleted list */
+.top-job-section .row div.job_listings article .job-description {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.6;
+}
+
+.top-job-section .row div.job_listings article .job-description ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.top-job-section .row div.job_listings article .job-description li {
+    margin-bottom: 8px;
 }
 
 .top-job-section .row div.job_listings article .salary-amt,
 .top-job-section .row div.job_listings article .company-address {
-    font-size: 0.8888em;
-    line-height: 1.44em;
+    font-size: 0.9em;
+    line-height: 1.5;
     font-weight: 400;
     margin-bottom: 5px;
+    color: #555;
 }
 
 .top-job-section .row div.job_listings article .salary-amt .currency {
-    font-weight: 900;
-    color: #2ace5e;
+    font-weight: 600;
+    color: #ff6600;
     margin-right: 5px;
 }
 
@@ -2672,101 +2775,138 @@ section.top-job-section .section-title {
     vertical-align: text-top;
 }
 
-.top-job-section .row div.job_listings article .company-address svg {
-    color: #2ace5e;
+.top-job-section .row div.job_listings article .company-address svg,
+.top-job-section .row div.job_listings article .company-address i {
+    color: #ff6600;
     margin-right: 5px;
 }
 
 .top-job-section .row div.job_listings article .entry-meta a {
-    color: #000;
+    color: #555;
+    text-decoration: none;
 }
 
 .top-job-section .row div.job_listings article .entry-meta a:hover {
-    color: #2ace5e;
+    color: #ff6600;
 }
 
-.job-manager li.job-type,
-.job-types li.job-type,
-.job_listing li.job-type {
+/* Job type tags trong entry-meta - màu xám cho top-job-section */
+.top-job-section .job-manager li.job-type,
+.top-job-section .job-types li.job-type,
+.top-job-section .job_listing li.job-type,
+.top-job-section .row div.job_listings article .entry-meta li.job-type,
+.top-job-section .row div.job_listings article .entry-meta .job-type {
     list-style: none;
-    font-size: 0.7778em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
+    font-size: 0.75em;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    font-weight: 400;
     display: inline-block;
-    border: 1px solid #2ace5e;
-    border-radius: 40px;
-    padding: 5px 20px;
-    color: #2ace5e;
-    margin-top: 10px;
+    border: none !important;
+    border-radius: 15px;
+    padding: 6px 12px;
+    color: #555 !important;
+    background: #f0f0f0 !important;
+    margin: 0 4px 0 0;
     cursor: default;
 }
 
-.job-manager li.freelance,
-.job-types li.freelance,
-.job_listing li.freelance {
-    color: #39c;
-    border-color: #39c;
+/* Override các job type colors trong top-job-section - đảm bảo tất cả đều màu xám */
+.top-job-section .row div.job_listings article .entry-meta li.job-type.fulltime,
+.top-job-section .row div.job_listings article .entry-meta li.job-type.freelance,
+.top-job-section .row div.job_listings article .entry-meta li.job-type.internship,
+.top-job-section .row div.job_listings article .entry-meta li.job-type.part-time,
+.top-job-section .row div.job_listings article .entry-meta li.job-type.temporary,
+.top-job-section .row div.job_listings article .entry-meta li.job-type[class*="job-type"] {
+    color: #555 !important;
+    background: #f0f0f0 !important;
+    border: none !important;
 }
 
-.job-manager li.internship,
-.job-types li.internship,
-.job_listing li.internship {
-    color: #6033cc;
-    border-color: #6033cc;
-}
-
-.job-manager li.part-time,
-.job-types li.part-time,
-.job_listing li.part-time {
-    color: #f08d3c;
-    border-color: #f08d3c;
-}
-
-.job-manager li.temporary,
-.job-types li.temporary,
-.job_listing li.temporary {
-    color: #d93674;
-    border-color: #d93674;
-}
-
+/* Button VIEW MORE JOBS - màu cam */
 .top-job-section div.job_listings .load_more_jobs {
-    display: table;
-    margin: 20px auto 0 auto;
-    font-size: 0.8888em;
+    display: block;
+    margin: 40px auto 0;
+    font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: #2ace5e;
+    background: #ff6600;
     border-radius: 5px;
     color: #fff;
-    padding: 12px 20px 12px 45px;
-    border: 1px solid #2ace5e;
+    padding: 12px 30px;
+    border: none;
     position: relative;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: fit-content;
 }
 
 .top-job-section div.job_listings .load_more_jobs:hover {
-    color: #2ace5e;
-    background: none;
+    background: #e55a00;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
 }
 
 .top-job-section div.job_listings .load_more_jobs::before {
-    content: "";
-    background-image: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23fff" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>');
-    background-repeat: no-repeat;
-    width: 11px;
-    height: 12px;
-    position: absolute;
-    top: 17px;
-    left: 20px;
-}
-
-.top-job-section div.job_listings .load_more_jobs:hover::before {
-    content: "";
-    background-image: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%232ace5e" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>');
+    display: none;
 }
 
 .top-job-section div.job_listings .load_more_jobs strong {
-    font-weight: 700;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .top-job-section .row .job_listings .job_listings {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .top-job-section .row div.job_listings article {
+        padding: 25px;
+    }
+    
+    .top-job-section .row div.job_listings article .company-logo {
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        margin-right: 20px;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .top-job-section .row .job_listings .job_listings {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .top-job-section .row div.job_listings article {
+        flex-direction: column;
+        padding: 25px 20px;
+    }
+    
+    .top-job-section .row div.job_listings article .company-logo {
+        width: 100%;
+        min-width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+    
+    .top-job-section .row div.job_listings article .job-title-wrap {
+        width: 100%;
+        padding-left: 0;
+    }
+    
+    .top-job-section .row div.job_listings article .entry-title {
+        font-size: 1.2em;
+    }
 }
 
 /*============================
