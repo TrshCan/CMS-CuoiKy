@@ -8935,29 +8935,33 @@ RESPONSIVE STYLESHEET
 .banner-caption .jobscout_job_filters .search_jobs .search_location input {
     width: 100%;
 }
+
+
 /* --- GRID 2 COLUMN --- */
 #blog-section .article-wrap {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
 }
+
 #blog-section .post {
-    width: 562px;
-    height: 247px;
+    /*width: 562px;*/
+    /*height: 247px;*/
     display: flex;
     background: #fff;
     padding: 20px;
-    border-radius: 14px;
+    /*border-radius: 14px;*/
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
-    overflow: hidden; /* tránh tràn */
+    overflow: hidden;
 }
+
 /* IMAGE */
 #blog-section .post-thumbnail {
-    width: 220px;         /* để vừa với tổng 562px */
-    height: 100%;         /* auto khớp chiều cao 247px */
-    border-radius: 10px;
+    width: 220px;
+    height: 100%;
+    /*border-radius: 10px;*/
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -8968,18 +8972,18 @@ RESPONSIVE STYLESHEET
     object-fit: cover;
 }
 
-/* CONTENT (center vertical) */
+/* CONTENT */
 #blog-section .entry-header {
-    flex: 1;
-    height: 100%;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* ⭐ Text nằm giữa ảnh */
+    flex: 1;
+
 }
 
 /* TITLE */
 #blog-section .entry-title {
-    font-size: 22px;
+    font-size: 15px;
     font-weight: 700;
     margin: 0 0 12px 0;
 }
@@ -8991,19 +8995,27 @@ RESPONSIVE STYLESHEET
     line-height: 1.6;
 
     display: -webkit-box;
-    -webkit-line-clamp: 3;     /* ⭐ Bạn chỉnh 2/3/4 tùy ý */
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
-
-
-/* Read More */
-#blog-section .read-more {
-    color: #ff7a00;
-    font-weight: 600;
+.article-section .read-more {
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    color: #f39a55;
+    font-size: 15px;
     text-decoration: none;
+    margin-top: auto !important;  /* KEY FIX */
+
 }
+.article-section .read-more:hover{
+    color: #5e3516;
+}
+
+
+
+
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
@@ -9017,6 +9029,7 @@ RESPONSIVE STYLESHEET
         height: 220px;
     }
 }
-#blog-section{
+
+#blog-section {
     background: #F5F5F7;
 }

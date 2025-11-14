@@ -61,10 +61,10 @@ if( $ed_blog && ( $blog_heading || $sub_title || $qry->have_posts() ) ){ ?>
                             </h3>
 
                             <div class="entry-excerpt">
-                                <?php the_excerpt(); ?>
+                                <?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
                             </div>
-
                             <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
+
                         </header>
                     </article>
 
