@@ -8258,3 +8258,255 @@ RESPONSIVE STYLESHEET
 
 }
 
+/* ===========================
+   BLOG PAGE - 2 COLUMN LAYOUT
+   Custom CSS for Blog Archive Pages
+   =========================== */
+
+/* Background color for blog page - light grey */
+.site-content {
+    background-color: #f5f5f5 !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+/* Main blog container - 2 column grid with proper spacing */
+#primary .site-main {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px 50px !important;
+    margin-bottom: 40px !important;
+    padding: 0 !important;
+}
+
+/* Blog post card styling - white card with shadow */
+.site-main article.post {
+    background: #ffffff !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    height: 100% !important;
+}
+
+/* Post thumbnail - perfect square image on left, centered vertically */
+.site-main article.post .post-thumbnail {
+    width: 180px !important;
+    min-width: 180px !important;
+    height: 180px !important;
+    max-width: 180px !important;
+    flex-shrink: 0 !important;
+    margin: 0 0 0 10px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background-color: #f0f0f0 !important;
+    align-self: center !important;
+}
+
+.site-main article.post .post-thumbnail a {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+.site-main article.post .post-thumbnail img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+/* Fallback SVG for posts without thumbnail */
+.site-main article.post .post-thumbnail .svg-holder {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #e8e8e8 !important;
+}
+
+.site-main article.post .post-thumbnail .svg-holder svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Content wrap - right side with proper spacing */
+.site-main article.post .content-wrap {
+    flex: 1 !important;
+    padding: 20px 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 180px !important;
+    min-width: 0 !important;
+}
+
+/* Entry header */
+.site-main article.post .entry-header {
+    margin-bottom: 12px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Entry meta - hide or minimize */
+.site-main article.post .entry-meta {
+    display: none !important;
+}
+
+/* Entry title - bold and prominent */
+.site-main article.post .entry-title {
+    margin: 0 0 12px 0 !important;
+    font-size: 1.15em !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.3px !important;
+}
+
+.site-main article.post .entry-title a {
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+    display: block !important;
+}
+
+/* Entry content - description text with proper truncation */
+.site-main article.post .entry-content {
+    margin: 0 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.site-main article.post .entry-content p {
+    margin: 0 0 0 0 !important;
+    font-size: 0.875em !important;
+    line-height: 1.65 !important;
+    color: #666666 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    flex: 1 !important;
+}
+
+/* Entry footer - Read More link aligned to right */
+.site-main article.post .entry-footer {
+    margin-top: 15px !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+    flex-shrink: 0 !important;
+    text-align: right !important;
+}
+
+.site-main article.post .entry-footer .readmore-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    font-size: 0.875em !important;
+    font-weight: 500 !important;
+    color: #2ace5e !important;
+    text-decoration: none !important;
+    text-transform: capitalize !important;
+    letter-spacing: 0.3px !important;
+}
+
+.site-main article.post .entry-footer .readmore-link svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 6px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Navigation - pagination */
+.site-main + .posts-navigation {
+    margin-top: 50px !important;
+    padding-top: 30px !important;
+    border-top: 1px solid #e0e0e0 !important;
+    text-align: center !important;
+}
+
+/* Ensure container has proper padding and wider width for blog */
+.site-content .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    max-width: 1600px !important;
+}
+
+/* Make blog grid wider */
+#primary .site-main {
+    max-width: 100% !important;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    #primary .site-main {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px 20px !important;
+    }
+    
+    .site-main article.post .post-thumbnail {
+        width: 180px !important;
+        min-width: 180px !important;
+        max-width: 180px !important;
+        height: 180px !important;
+        margin: 0 0 0 10px !important;
+    }
+    
+    .site-main article.post .content-wrap {
+        padding: 18px 20px !important;
+        min-height: 180px !important;
+    }
+    
+    .site-main article.post .entry-title {
+        font-size: 1.05em !important;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .site-content {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    #primary .site-main {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .site-main article.post {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+    
+    .site-main article.post .post-thumbnail {
+        width: 100% !important;
+        height: 220px !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .site-main article.post .content-wrap {
+        padding: 20px !important;
+        min-height: auto !important;
+    }
+    
+    .site-main article.post .entry-title {
+        font-size: 1.1em !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .site-main article.post .entry-footer {
+        text-align: left !important;
+        margin-top: 12px !important;
+    }
+}
+
