@@ -2568,35 +2568,86 @@ section.top-job-section .section-title {
     margin-bottom: 40px;
 }
 
-.top-job-section .row .job_listings .job_listings {
+.top-job-section .row .job_listings .job_listings,
+.site-main .entry-content div.job_listings div.job_listings {
     display: flex;
     flex: 1;
     flex-wrap: wrap;
 }
 
-.top-job-section .row div.job_listings article {
+.top-job-section .row div.job_listings article,
+.site-main .entry-content div.job_listings div.job_listings article {
     width: 48%;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #f8f8f8;
+    border: none;
     margin-right: 2.5%;
     margin-bottom: 3%;
-    border-radius: 5px;
-    padding: 30px;
+    border-radius: 0;
+    padding: 25px;
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     overflow: hidden;
+    box-shadow: none;
 }
 
-.top-job-section .row div.job_listings article:nth-child(2n) {
+.top-job-section .row div.job_listings article:nth-child(2n),
+.site-main .entry-content div.job_listings div.job_listings article:nth-child(2n) {
     margin-right: 0;
 }
 
-.top-job-section .row div.job_listings article .company-logo {
-    width: 100px;
+.top-job-section .row div.job_listings article .job-listing-card,
+.site-main .entry-content div.job_listings div.job_listings article .job-listing-card {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.top-job-section .row div.job_listings article .company-logo,
+.site-main .entry-content div.job_listings div.job_listings article .company-logo {
+    width: 120px;
+    min-width: 120px;
+    height: 120px;
     margin: 0;
-    background: #eeeeee;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.top-job-section .row div.job_listings article .company-logo img,
+.site-main .entry-content div.job_listings div.job_listings article .company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.top-job-section .row div.job_listings article .company-logo-fallback,
+.site-main .entry-content div.job_listings div.job_listings article .company-logo-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.top-job-section .row div.job_listings article .company-name-in-logo,
+.site-main .entry-content div.job_listings div.job_listings article .company-name-in-logo {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+    text-transform: uppercase;
 }
 
 .featured-label {
@@ -2619,20 +2670,127 @@ section.top-job-section .section-title {
     transform: rotate(45deg);
 }
 
-.top-job-section .row div.job_listings article .job-title-wrap {
-    width: calc(100% - 100px);
+.top-job-section .row div.job_listings article .job-title-wrap,
+.site-main .entry-content div.job_listings div.job_listings article .job-title-wrap {
+    width: calc(100% - 140px);
     padding-left: 20px;
+    flex: 1;
 }
 
-.top-job-section .row div.job_listings article .entry-title {
+.top-job-section .row div.job_listings article .entry-title,
+.site-main .entry-content div.job_listings div.job_listings article .entry-title {
     margin-top: 0;
-    margin-bottom: 0;
-    padding-right: 30px;
-    font-size: 1.1112em;
-    line-height: 1.45em;
+    margin-bottom: 8px;
+    padding-right: 0;
+    font-size: 1.333em;
+    line-height: 1.3em;
+    font-weight: 700;
 }
 
-.top-job-section .row div.job_listings article .company-name {
+.top-job-section .row div.job_listings article .entry-title a,
+.site-main .entry-content div.job_listings div.job_listings article .entry-title a {
+    color: #000;
+    text-decoration: none;
+}
+
+.top-job-section .row div.job_listings article .entry-title a:hover,
+.site-main .entry-content div.job_listings div.job_listings article .entry-title a:hover {
+    color: #2ace5e;
+}
+
+.top-job-section .row div.job_listings article .created-date,
+.site-main .entry-content div.job_listings div.job_listings article .created-date {
+    font-size: 0.8888em;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.top-job-section .row div.job_listings article .job-details-bar,
+.site-main .entry-content div.job_listings div.job_listings article .job-details-bar {
+    background: #e8e8e8;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.8888em;
+}
+
+.top-job-section .row div.job_listings article .job-details-bar .job-type-item,
+.top-job-section .row div.job_listings article .job-details-bar .job-category-item,
+.top-job-section .row div.job_listings article .job-details-bar .recruit-area-item,
+.site-main .entry-content div.job_listings div.job_listings article .job-details-bar .job-type-item,
+.site-main .entry-content div.job_listings div.job_listings article .job-details-bar .job-category-item,
+.site-main .entry-content div.job_listings div.job_listings article .job-details-bar .recruit-area-item {
+    color: #000;
+    font-weight: 400;
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.top-job-section .row div.job_listings article .job-details-bar .job-type-item:first-child,
+.site-main .entry-content div.job_listings div.job_listings article .job-details-bar .job-type-item:first-child {
+    padding-left: 0;
+}
+
+.top-job-section .row div.job_listings article .job-details-bar .job-type-item:not(:last-child)::after,
+.top-job-section .row div.job_listings article .job-details-bar .job-category-item:not(:last-child)::after,
+.site-main .entry-content div.job_listings div.job_listings article .job-details-bar .job-type-item:not(:last-child)::after,
+.site-main .entry-content div.job_listings div.job_listings article .job-details-bar .job-category-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #d0d0d0;
+}
+
+.top-job-section .row div.job_listings article .job-short-description,
+.site-main .entry-content div.job_listings div.job_listings article .job-short-description {
+    font-size: 0.8888em;
+    color: #000;
+    line-height: 1.5em;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.top-job-section .row div.job_listings article .job-short-description ul,
+.site-main .entry-content div.job_listings div.job_listings article .job-short-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.top-job-section .row div.job_listings article .job-short-description ul li,
+.site-main .entry-content div.job_listings div.job_listings article .job-short-description ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+.top-job-section .row div.job_listings article .job-short-description ul li::before,
+.site-main .entry-content div.job_listings div.job_listings article .job-short-description ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #000;
+    font-size: 1.2em;
+    line-height: 1.2em;
+}
+
+.top-job-section .row div.job_listings article .job-short-description p,
+.site-main .entry-content div.job_listings div.job_listings article .job-short-description p {
+    margin: 0;
+    padding: 0;
+}
+
+.top-job-section .row div.job_listings article .company-name,
+.site-main .entry-content div.job_listings div.job_listings article .company-name {
     font-size: 0.8888em;
     color: rgba(0, 0, 0, 0.5);
     font-weight: 400;
@@ -2640,11 +2798,13 @@ section.top-job-section .section-title {
     margin-top: 5px;
 }
 
-.top-job-section .row div.job_listings article .company-name::before {
+.top-job-section .row div.job_listings article .company-name::before,
+.site-main .entry-content div.job_listings div.job_listings article .company-name::before {
     content: "@";
 }
 
-.top-job-section .row div.job_listings article .entry-meta {
+.top-job-section .row div.job_listings article .entry-meta,
+.site-main .entry-content div.job_listings div.job_listings article .entry-meta {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: 15px;
     padding-top: 15px;
@@ -2652,14 +2812,17 @@ section.top-job-section .section-title {
 }
 
 .top-job-section .row div.job_listings article .salary-amt,
-.top-job-section .row div.job_listings article .company-address {
+.top-job-section .row div.job_listings article .company-address,
+.site-main .entry-content div.job_listings div.job_listings article .salary-amt,
+.site-main .entry-content div.job_listings div.job_listings article .company-address {
     font-size: 0.8888em;
     line-height: 1.44em;
     font-weight: 400;
     margin-bottom: 5px;
 }
 
-.top-job-section .row div.job_listings article .salary-amt .currency {
+.top-job-section .row div.job_listings article .salary-amt .currency,
+.site-main .entry-content div.job_listings div.job_listings article .salary-amt .currency {
     font-weight: 900;
     color: #2ace5e;
     margin-right: 5px;
@@ -2672,16 +2835,19 @@ section.top-job-section .section-title {
     vertical-align: text-top;
 }
 
-.top-job-section .row div.job_listings article .company-address svg {
+.top-job-section .row div.job_listings article .company-address svg,
+.site-main .entry-content div.job_listings div.job_listings article .company-address svg {
     color: #2ace5e;
     margin-right: 5px;
 }
 
-.top-job-section .row div.job_listings article .entry-meta a {
+.top-job-section .row div.job_listings article .entry-meta a,
+.site-main .entry-content div.job_listings div.job_listings article .entry-meta a {
     color: #000;
 }
 
-.top-job-section .row div.job_listings article .entry-meta a:hover {
+.top-job-section .row div.job_listings article .entry-meta a:hover,
+.site-main .entry-content div.job_listings div.job_listings article .entry-meta a:hover {
     color: #2ace5e;
 }
 
@@ -2736,33 +2902,26 @@ section.top-job-section .section-title {
     font-size: 0.8888em;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: #2ace5e;
+    background: transparent;
     border-radius: 5px;
-    color: #fff;
-    padding: 12px 20px 12px 45px;
-    border: 1px solid #2ace5e;
+    color: #EA751E;
+    padding: 12px 20px;
+    border: 1px solid #EA751E;
     position: relative;
 }
 
 .top-job-section div.job_listings .load_more_jobs:hover {
-    color: #2ace5e;
-    background: none;
+    color: #EA751E;
+    background: transparent;
+    border-color: #EA751E;
 }
 
 .top-job-section div.job_listings .load_more_jobs::before {
-    content: "";
-    background-image: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23fff" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>');
-    background-repeat: no-repeat;
-    width: 11px;
-    height: 12px;
-    position: absolute;
-    top: 17px;
-    left: 20px;
+    display: none;
 }
 
 .top-job-section div.job_listings .load_more_jobs:hover::before {
-    content: "";
-    background-image: url('data:image/svg+xml; utf-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%232ace5e" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>');
+    display: none;
 }
 
 .top-job-section div.job_listings .load_more_jobs strong {
@@ -5573,106 +5732,14 @@ PAGE TEMPLATE LOGIN REGISTER
     width: 100%;
 }
 
-/*==========================
-JOB LISTING PAGE
-==========================*/
-.site-main .entry-content div.job_listings div.job_listings article {
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
-    margin-bottom: 25px;
-    border-radius: 5px;
-    padding: 30px;
-    position: relative;
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    overflow: hidden;
-    align-items: flex-start;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .company-logo {
-    width: 100px;
-    margin: 0;
-    background: #eeeeee;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .job-title-wrap {
-    width: calc(100% - 100px);
-    padding-left: 20px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 1.1112em;
-    line-height: 1.45em;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .company-name {
-    font-size: 0.8888em;
-    color: rgba(0, 0, 0, 0.5);
-    font-weight: 400;
-    line-height: 1.44em;
-    margin-top: 5px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .company-name:before {
-    content: "@";
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
-    padding-top: 15px;
-    font-size: 1em;
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt,
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address {
-    font-size: 0.8888em;
-    line-height: 1.44em;
-    font-weight: 400;
-    margin-bottom: 5px;
-    margin-right: 40px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt .currency {
-    font-weight: 900;
-    color: #2ace5e;
-    margin-right: 5px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address svg {
-    color: #2ace5e;
-    margin-right: 5px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta a {
-    color: #000;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta a:hover {
-    color: #2ace5e;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .job-type {
-    margin-top: 0;
-    margin-left: auto;
-    display: table;
-}
-
 div.job_listings .load_more_jobs {
     display: table;
-    border: 1px solid #2ace5e;
+    border: 1px solid #EA751E;
     text-transform: uppercase;
     font-size: 0.7778em;
     font-weight: 400;
-    background: #2ace5e;
-    color: #fff;
+    background: transparent;
+    color: #EA751E;
     padding: 15px 20px;
     margin-top: 40px;
     margin-left: auto;
@@ -5682,9 +5749,9 @@ div.job_listings .load_more_jobs {
 
 div.job_listings .load_more_jobs:hover,
 div.job_listings .load_more_jobs:focus {
-    background: none;
-    color: #2ace5e;
-    border-bottom-color: #2ace5e;
+    background: transparent;
+    color: #EA751E;
+    border-color: #EA751E;
 }
 
 .site-main .job_listings .jobscout_job_filters {
@@ -6435,21 +6502,38 @@ RESPONSIVE STYLESHEET
     /*=========================
 	TOP JOB SECTION
 	=========================*/
-    .top-job-section .row div.job_listings article {
+    .top-job-section .row div.job_listings article,
+    .site-main .entry-content div.job_listings div.job_listings article {
         flex-direction: column;
     }
 
-    .top-job-section .row div.job_listings article .company-logo {
-        margin-bottom: 20px;
+    .top-job-section .row div.job_listings article .job-listing-card,
+    .site-main .entry-content div.job_listings div.job_listings article .job-listing-card {
+        flex-direction: column;
     }
 
-    .top-job-section .row div.job_listings article .job-title-wrap {
+    .top-job-section .row div.job_listings article .company-logo,
+    .site-main .entry-content div.job_listings div.job_listings article .company-logo {
+        margin-bottom: 20px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .top-job-section .row div.job_listings article .job-title-wrap,
+    .site-main .entry-content div.job_listings div.job_listings article .job-title-wrap {
         width: 100%;
         padding-left: 0;
     }
 
-    .top-job-section .row div.job_listings article .entry-title {
+    .top-job-section .row div.job_listings article .entry-title,
+    .site-main .entry-content div.job_listings div.job_listings article .entry-title {
         padding-right: 0;
+    }
+
+    .top-job-section .row div.job_listings article .job-details-bar,
+    .site-main .entry-content div.job_listings div.job_listings article .job-details-bar {
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     /*=========================
@@ -6689,13 +6773,33 @@ RESPONSIVE STYLESHEET
     /*=========================
 	TOP JOB SECTION
 	=========================*/
-    .top-job-section .row .job_listings .job_listings {
+    .top-job-section .row .job_listings .job_listings,
+    .site-main .entry-content div.job_listings div.job_listings {
         flex-direction: column;
     }
 
-    .top-job-section .row div.job_listings article {
+    .top-job-section .row div.job_listings article,
+    .site-main .entry-content div.job_listings div.job_listings article {
         margin-right: 0;
         width: 100%;
+    }
+
+    .top-job-section .row div.job_listings article .job-listing-card,
+    .site-main .entry-content div.job_listings div.job_listings article .job-listing-card {
+        flex-direction: column;
+    }
+
+    .top-job-section .row div.job_listings article .company-logo,
+    .site-main .entry-content div.job_listings div.job_listings article .company-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
+    .top-job-section .row div.job_listings article .job-title-wrap,
+    .site-main .entry-content div.job_listings div.job_listings article .job-title-wrap {
+        width: 100%;
+        padding-left: 0;
     }
 
     /*========================
