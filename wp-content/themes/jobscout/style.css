@@ -3246,8 +3246,9 @@ section.client-section {
 SITE FOOTER SECTION
 ==========================*/
 .footer-t {
-    background: #000;
+    background: #ededed;
     padding-top: 60px;
+    color: #000000 !important;
 }
 
 .site-footer .grid:not(.column-1) {
@@ -3277,7 +3278,7 @@ SITE FOOTER SECTION
 }
 
 .site-footer .widget_text .textwidget {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .widget_text .textwidget p {
@@ -3292,7 +3293,7 @@ SITE FOOTER SECTION
 .footer-b {
     background: #212121;
     padding: 15px 0;
-    font-size: 0.888em;
+    font-size: 12px;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 400;
     text-align: center;
@@ -8231,16 +8232,10 @@ RESPONSIVE STYLESHEET
 }
 
 .site-footer .widget_block .wp-block-tag-cloud a {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: #000 !important;
 }
 
 
-
-.widget_block .wp-block-tag-cloud a:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--white-color) !important;
-}
 
 .footer-t label.wp-block-search__label {
     color: var(--white-color);
@@ -8360,5 +8355,296 @@ RESPONSIVE STYLESHEET
 .banner-caption .jobscout_job_filters .search_jobs .search_location input {
     width: 100%;
 
+}
+
+/* ===========================
+   BLOG PAGE - 2 COLUMN LAYOUT
+   Custom CSS for Blog Archive Pages
+   =========================== */
+
+/* Background color for blog page - light grey */
+.blog .site-content {
+    background-color: #f5f5f5 !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+/* Main blog container - 2 column grid with proper spacing */
+.blog #primary .site-main {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px 50px !important;
+    margin-bottom: 40px !important;
+    padding: 0 !important;
+}
+
+/* Blog post card styling - white card with shadow */
+.blog .site-main article.post {
+    background: #ffffff !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    height: 100% !important;
+}
+
+/* Post thumbnail - perfect square image on left, centered vertically */
+.blog .site-main article.post .post-thumbnail {
+    width: 180px !important;
+    min-width: 180px !important;
+    height: 180px !important;
+    max-width: 180px !important;
+    flex-shrink: 0 !important;
+    margin: 0 0 0 10px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background-color: #f0f0f0 !important;
+    align-self: center !important;
+}
+
+.blog .site-main article.post .post-thumbnail a {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+.blog .site-main article.post .post-thumbnail img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+/* Fallback SVG for posts without thumbnail */
+.blog .site-main article.post .post-thumbnail .svg-holder {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #e8e8e8 !important;
+}
+
+.blog .site-main article.post .post-thumbnail .svg-holder svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Content wrap - right side with proper spacing */
+.blog .site-main article.post .content-wrap {
+    flex: 1 !important;
+    padding: 20px 30px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 180px !important;
+    min-width: 0 !important;
+}
+
+/* Entry header */
+.blog .site-main article.post .entry-header {
+    margin-bottom: 12px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Entry meta - hide or minimize */
+.blog .site-main article.post .entry-meta {
+    display: none !important;
+}
+
+/* Entry title - bold and prominent */
+.blog .site-main article.post .entry-title {
+    margin: 0 0 12px 0 !important;
+    font-size: 1.15em !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    letter-spacing: -0.3px !important;
+}
+
+.blog .site-main article.post .entry-title a {
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+    display: block !important;
+}
+
+/* Entry content - description text with proper truncation */
+.blog .site-main article.post .entry-content {
+    margin: 0 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.blog .site-main article.post .entry-content p {
+    margin: 0 !important;
+    font-size: 0.875em !important;
+    line-height: 1.65 !important;
+    color: #666666 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    flex: 1 !important;
+}
+
+/* Entry footer - Read More link aligned to right */
+.blog .site-main article.post .entry-footer {
+    margin-top: 15px !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+    flex-shrink: 0 !important;
+    text-align: right !important;
+}
+
+.blog .site-main article.post .entry-footer .readmore-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    font-size: 0.875em !important;
+    font-weight: 500 !important;
+    color: #2ace5e !important;
+    text-decoration: none !important;
+    text-transform: capitalize !important;
+    letter-spacing: 0.3px !important;
+}
+
+.blog .site-main article.post .entry-footer .readmore-link svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 6px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Navigation - pagination */
+.blog .site-main + .posts-navigation {
+    margin-top: 50px !important;
+    padding-top: 30px !important;
+    border-top: 1px solid #e0e0e0 !important;
+    text-align: center !important;
+}
+
+/* Ensure container has proper padding and wider width for blog */
+.blog .site-content .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    max-width: 1600px !important;
+}
+
+/* Make blog grid wider */
+.blog #primary .site-main {
+    max-width: 100% !important;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .blog #primary .site-main {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px 20px !important;
+    }
+
+    .blog .site-main article.post .post-thumbnail {
+        width: 180px !important;
+        min-width: 180px !important;
+        max-width: 180px !important;
+        height: 180px !important;
+        margin: 0 0 0 10px !important;
+    }
+
+    .blog .site-main article.post .content-wrap {
+        padding: 18px 20px !important;
+        min-height: 180px !important;
+    }
+
+    .blog .site-main article.post .entry-title {
+        font-size: 1.05em !important;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .blog .site-content {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .blog #primary .site-main {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .blog .site-main article.post {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+
+    .blog .site-main article.post .post-thumbnail {
+        width: 100% !important;
+        height: 220px !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .blog .site-main article.post .content-wrap {
+        padding: 20px !important;
+        min-height: auto !important;
+    }
+
+    .blog .site-main article.post .entry-title {
+        font-size: 1.1em !important;
+        margin-bottom: 10px !important;
+    }
+
+    .blog .site-main article.post .entry-footer {
+        text-align: left !important;
+        margin-top: 12px !important;
+    }
+}
+.pageOne.wp-block-page-list {
+    display: flex;           /* Biến ul thành flex container */
+    flex-wrap: wrap;         /* Cho phép xuống dòng nếu không đủ chỗ */
+    list-style: none;        /* Bỏ dấu chấm đầu dòng */
+    padding: 0;
+    margin: 0;
+}
+
+.pageOne.wp-block-page-list li {
+    margin-right: 20px;      /* Khoảng cách giữa các mục */
+}
+
+.pageOne.wp-block-page-list li:last-child {
+    margin-right: 0;         /* Bỏ khoảng cách ở mục cuối */
+}
+
+.pageOne.wp-block-page-list a {
+    text-decoration: none;   /* Bỏ gạch chân link (tùy chọn) */
+    white-space: nowrap;     /* Không cho text xuống dòng */
+}
+/* Đổi màu chữ menu danh sách trang thành đen */
+#block-8 .wp-block-page-list a,
+#block-8 .wp-block-pages-list__item__link {
+    color: #000000 !important; /* Màu đen */
+    font-weight: 800; /* Tùy chọn: đậm nhẹ cho nổi bật */
+}
+
+#block-8 .wp-block-page-list a:hover,
+#block-8 .wp-block-pages-list__item__link:hover {
+    color: #2ace5e !important; /* Màu khi hover - giữ theo theme */
+    text-decoration: none;
+}
+
+/* Trang hiện tại (Home) - vẫn đen nhưng có thể thêm hiệu ứng */
+#block-8 .current-menu-item a,
+#block-8 .wp-block-pages-list__item.current-menu-item .wp-block-pages-list__item__link {
+    color: #000000 !important;
+    font-weight: 800;
 }
 
