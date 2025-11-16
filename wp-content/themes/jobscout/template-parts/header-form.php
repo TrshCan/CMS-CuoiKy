@@ -21,7 +21,7 @@ if ($post_slug) {
 
 <div class="job_listings">
 
-    <form class="jobscout_job_filters" method="GET" action="http://localhost:8080/jobs">
+    <form class="jobscout_job_filters" method="GET" action="http://localhost/CMS-CuoiKy/jobs">
         <div class="search_jobs">
 
             <div class="search_keywords">
