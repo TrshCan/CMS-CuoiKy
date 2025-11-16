@@ -3483,9 +3483,51 @@ section.client-section {
 SITE FOOTER SECTION
 ==========================*/
 .footer-t {
-    background: #000;
-    padding-top: 60px;
+    background: #EA7621;
+
 }
+/* Container form */
+.footer-t .wpcf7-form {
+    display: flex;
+    justify-content: center; /* căn giữa form */
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* responsive */
+}
+
+/* Loại bỏ margin mặc định <p> */
+.footer-t .wpcf7-form p {
+    margin: 0;
+}
+
+/* Input với icon email */
+.footer-t .wpcf7-form-control.wpcf7-text,
+.footer-t .wpcf7-form-control.wpcf7-email {
+    padding: 8px 12px 8px 35px; /* padding-left để chừa chỗ icon */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #fff url('data:image/svg+xml;utf8,<svg fill="gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm8 8l8-5H4l8 5z"/></svg>') no-repeat 10px center;
+    background-size: 18px 18px; /* kích thước icon */
+}
+
+/* Button Subscribe outline trắng, background none, text trắng */
+.footer-t .wpcf7-form-control.wpcf7-submit {
+    padding: 8px 16px;
+    background: none;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.footer-t .wpcf7-form-control.wpcf7-submit:hover {
+    background: #fff;
+    color: #2ace5e;
+}
+
 
 .site-footer .grid:not(.column-1) {
     display: flex;

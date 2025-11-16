@@ -157,7 +157,7 @@ function jobscout_content_start(){
                                 <div class="author-content">
                                     <?php 
                                         echo '<span class="sub-title">' . esc_html__( 'All Posts by', 'jobscout' ) . '</span>';
-                                        if( $author_title ) echo '<h1 class="author-title">' . esc_html( $author_title ) . '</h3>';
+                                        if( $author_title ) echo '<h1 class="author-title">' . esc_html( $author_title ) . '</h1>';
                                     ?>      
                                 </div>
                             </div>
