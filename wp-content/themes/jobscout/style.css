@@ -6227,7 +6227,7 @@ PAGE TEMPLATE LOGIN REGISTER
 /*==========================
 JOB LISTING PAGE
 ==========================*/
-.site-main .entry-content div.job_listings div.job_listings article {
+.job_listings .site-main .entry-content div.job_listings div.job_listings article {
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
     margin-bottom: 25px;
@@ -9473,7 +9473,7 @@ RESPONSIVE STYLESHEET
 #blog-section {
     background: #F5F5F7;
 }
-}
+
 
 /* ===========================
    BLOG PAGE - 2 COLUMN LAYOUT
@@ -9481,7 +9481,7 @@ RESPONSIVE STYLESHEET
    =========================== */
 /*!*Thach*!*/
 
-.site-content {
+.blog .site-content {
    background-color: #f5f5f5 !important;
    padding-top: 40px !important;
    padding-bottom: 40px !important;
@@ -9507,6 +9507,7 @@ RESPONSIVE STYLESHEET
        align-items: center !important;
     margin-bottom: 0 !important;
     height: 100% !important;
+    
 }
 
 /*!* Post thumbnail - perfect square image on left, centered vertically *!*/
@@ -9573,7 +9574,7 @@ overflow: hidden !important;
 
 .blog .site-main article.post .entry-title {
     margin: 0 0 12px 0 !important;
-    font-size: 1.15em !important;
+    font-size: 15px !important;
     font-weight: 700 !important;
     line-height: 1.35 !important;
     letter-spacing: -0.3px !important;
@@ -9645,7 +9646,7 @@ overflow: hidden !important;
 .blog .site-content .container {
     padding-left: 15px !important;
     padding-right: 15px !important;
-    max-width: 1600px !important;
+    max-width: 1800px !important;
 }
 
 .blog #primary .site-main {
