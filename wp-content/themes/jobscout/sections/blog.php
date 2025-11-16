@@ -49,12 +49,12 @@ if( $ed_blog && ( $blog_heading || $sub_title || $qry->have_posts() ) ){ ?>
                         </div>
 
                         <header class="entry-header">
-                            <div class="entry-meta">
+                            <!-- <div class="entry-meta">
                                 <?php
                                 if( ! $hide_author ) jobscout_posted_by();
                                 if( ! $hide_date ) jobscout_posted_on();
                                 ?>
-                            </div>
+                            </div> -->
 
                             <h3 class="entry-title">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
