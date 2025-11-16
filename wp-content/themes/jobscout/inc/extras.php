@@ -233,6 +233,7 @@ function jobscout_secondary_navigation(){ ?>
 endif;
 
 if( ! function_exists( 'jobscout_secondary_menu_fallback' ) ) :
+
 /**
  * Fallback for secondary menu
 */

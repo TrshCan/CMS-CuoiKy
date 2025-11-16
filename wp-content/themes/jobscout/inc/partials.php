@@ -102,7 +102,7 @@ function jobscout_get_job_posting_section_title(){
  * Blog Section Title
 */
 function jobscout_get_blog_section_title(){
-    $blog_section_title = get_theme_mod( 'blog_section_title', __( 'Latest Articles', 'jobscout' ) );
+    $blog_section_title = get_theme_mod( 'blog_section_title', __( 'NEWEST BLOG ENTRIES', 'jobscout' ) );
 
     if ( $blog_section_title ){
         return esc_html( $blog_section_title );
@@ -114,15 +114,15 @@ function jobscout_get_blog_section_title(){
 /**
  * Blog Section Description
 */
-function jobscout_get_blog_section_description(){
-    $blog_section_subtitle = get_theme_mod( 'blog_section_subtitle', __( 'We will help you find it. We are your first step to becoming everything you want to be.', 'jobscout' ) );
-
-    if ( $blog_section_subtitle ){
-        return wpautop( wp_kses_post( $blog_section_subtitle ) );
-    } else {
-        return false;
-    }
-}
+//function jobscout_get_blog_section_description(){
+//    $blog_section_subtitle = get_theme_mod( 'blog_section_subtitle', __( 'We will help you find it. We are your first step to becoming everything you want to be.', 'jobscout' ) );
+//
+//    if ( $blog_section_subtitle ){
+//        return wpautop( wp_kses_post( $blog_section_subtitle ) );
+//    } else {
+//        return false;
+//    }
+//}
 
 /**
  * Blog View All Button
