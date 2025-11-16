@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-08-11 15:34+0530\n"
+"PO-Revision-Date: 2018-08-11 15:34+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: new-social-media-widget.php:48
+msgid "Social Media Widget"
+msgstr "सोशल मीडिया विजेट"
+
+#: new-social-media-widget.php:200
+msgid "Widget Title :"
+msgstr "विजेट शीर्षक:"
+
+#: new-social-media-widget.php:206
+msgid "Social Media Profile Settings"
+msgstr "सोशल मीडिया प्रोफाइल सेटिंग्स"
+
+#: new-social-media-widget.php:214
+msgid "Facebook :"
+msgstr "फेसबुक :"
+
+#: new-social-media-widget.php:219
+msgid "Twitter :"
+msgstr "ट्विटर :"
+
+#: new-social-media-widget.php:224
+msgid "Google-Plus :"
+msgstr "गूगल प्लस :"
+
+#: new-social-media-widget.php:229
+msgid "Linkedin :"
+msgstr "लिंक्डइन:"
+
+#: new-social-media-widget.php:234
+msgid "Instagram :"
+msgstr "इंस्टाग्राम :"
+
+#: new-social-media-widget.php:239
+msgid "Pinterest :"
+msgstr "पिनटेस्ट:"
+
+#: new-social-media-widget.php:244
+msgid "Flickr :"
+msgstr "फ़्लिकर:"
+
+#: new-social-media-widget.php:249
+msgid "Tumblr :"
+msgstr "टम्बलर:"
+
+#: new-social-media-widget.php:254
+msgid "Vimeo :"
+msgstr "वीमीयो :"
+
+#: new-social-media-widget.php:259
+msgid "Youtube :"
+msgstr "यूट्यूब :"
+
+#: new-social-media-widget.php:264
+msgid "Rss Feed:"
+msgstr "आरएसएस फ़ीड:"
+
+#: new-social-media-widget.php:269
+msgid "Whatsapp:"
+msgstr "व्हाट्सएप:"
+
+#: new-social-media-widget.php:274
+msgid "Email :"
+msgstr "ईमेल :"
+
+#: new-social-media-widget.php:282
+msgid "Widget Customization Settings"
+msgstr "विजेट अनुकूलन सेटिंग्स"
+
+#: new-social-media-widget.php:290
+msgid "How Many Icon Into Per Row:"
+msgstr "प्रति पंक्ति में कितने चिह्न हैं:"
+
+#: new-social-media-widget.php:301
+msgid "Icon Size:"
+msgstr "आइकन का आकार:"
+
+#: new-social-media-widget.php:312
+msgid "Padding:"
+msgstr "गद्दी:"
+
+#: new-social-media-widget.php:314 new-social-media-widget.php:331
+#: new-social-media-widget.php:358 new-social-media-widget.php:392
+#: new-social-media-widget.php:405
+msgid "None"
+msgstr "कोई नहीं"
+
+#: new-social-media-widget.php:329
+msgid "Margin Top:"
+msgstr "मार्जिन टॉप:"
+
+#: new-social-media-widget.php:356
+msgid "Margin Bottom:"
+msgstr "मार्जिन नीचे:"
+
+#: new-social-media-widget.php:383
+msgid "Effect Type :"
+msgstr "प्रभाव का प्रकार:"
+
+#: new-social-media-widget.php:390
+msgid "Div Background Color:"
+msgstr "डिव पृष्ठभूमि रंग:"
+
+#: new-social-media-widget.php:393 new-social-media-widget.php:406
+msgid "Red"
+msgstr "लाल"
+
+#: new-social-media-widget.php:394 new-social-media-widget.php:407
+msgid "Blue"
+msgstr "नीला"
+
+#: new-social-media-widget.php:395 new-social-media-widget.php:408
+msgid "Black"
+msgstr "काला"
+
+#: new-social-media-widget.php:396 new-social-media-widget.php:409
+msgid "White"
+msgstr "सफेद"
+
+#: new-social-media-widget.php:397 new-social-media-widget.php:410
+msgid "Green"
+msgstr "हरा"
+
+#: new-social-media-widget.php:398 new-social-media-widget.php:411
+msgid "Gold"
+msgstr "सोना"
+
+#: new-social-media-widget.php:399 new-social-media-widget.php:412
+msgid "Gray"
+msgstr "धूसर"
+
+#: new-social-media-widget.php:403
+msgid "Icon Color:"
+msgstr "आइकन रंग:"
+
+#: new-social-media-widget.php:416
+msgid "Custom CSS:"
+msgstr "कस्टम सीएसएस:"
+
+#: new-social-media-widget.php:423
+msgid "Buy Premium Version"
+msgstr "प्रीमियम संस्करण खरीदें"
+
+#~ msgid "red"
+#~ msgstr "लाल"
+
+#~ msgid "white"
+#~ msgstr "सफेद"

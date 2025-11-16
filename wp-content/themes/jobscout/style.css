@@ -6224,6 +6224,172 @@ PAGE TEMPLATE LOGIN REGISTER
     width: 100%;
 }
 
+/*==========================
+JOB LISTING PAGE
+==========================*/
+.site-main .entry-content div.job_listings div.job_listings article {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+    margin-bottom: 25px;
+    border-radius: 5px;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-items: flex-start;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .company-logo {
+    width: 100px;
+    margin: 0;
+    background: #eeeeee;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .job-title-wrap {
+    width: calc(100% - 100px);
+    padding-left: 20px;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.1112em;
+    line-height: 1.45em;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .company-name {
+    font-size: 0.8888em;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+    line-height: 1.44em;
+    margin-top: 5px;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .company-name:before {
+    content: "@";
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    padding-top: 15px;
+    font-size: 1em;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta
+    .salary-amt,
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta
+    .company-address {
+    font-size: 0.8888em;
+    line-height: 1.44em;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-right: 40px;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta
+    .salary-amt
+    .currency {
+    font-weight: 900;
+    color: #2ace5e;
+    margin-right: 5px;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta
+    .company-address
+    svg {
+    color: #2ace5e;
+    margin-right: 5px;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta
+    a {
+    color: #000;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta
+    a:hover {
+    color: #2ace5e;
+}
+
+.site-main
+    .entry-content
+    div.job_listings
+    div.job_listings
+    article
+    .entry-meta
+    .job-type {
+    margin-top: 0;
+    margin-left: auto;
+    display: table;
+}
+
 div.job_listings .load_more_jobs {
     display: table;
     border: 1px solid #ea751e;
@@ -9208,6 +9374,105 @@ RESPONSIVE STYLESHEET
 .banner-caption .jobscout_job_filters .search_jobs .search_keywords input,
 .banner-caption .jobscout_job_filters .search_jobs .search_location input {
     width: 100%;
+}
+
+
+/* --- GRID 2 COLUMN --- */
+#blog-section .article-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+#blog-section .post {
+    /*width: 562px;*/
+    /*height: 247px;*/
+    display: flex;
+    background: #fff;
+    padding: 20px;
+    /*border-radius: 14px;*/
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    align-items: flex-start;
+    gap: 24px;
+    overflow: hidden;
+}
+
+/* IMAGE */
+#blog-section .post-thumbnail {
+    width: 220px;
+    height: 100%;
+    /*border-radius: 10px;*/
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+#blog-section .post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CONTENT */
+#blog-section .entry-header {
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+/* TITLE */
+#blog-section .entry-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+
+/* EXCERPT */
+#blog-section .entry-excerpt {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.article-section .read-more {
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    color: #f39a55;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: auto !important;  /* KEY FIX */
+
+}
+.article-section .read-more:hover{
+    color: #5e3516;
+}
+
+
+
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    #blog-section .post {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    #blog-section .post-thumbnail {
+        width: 100%;
+        height: 220px;
+    }
+}
+
+#blog-section {
+    background: #F5F5F7;
+}
 }
 
 /* ===========================
