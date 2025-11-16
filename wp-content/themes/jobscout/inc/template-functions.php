@@ -500,7 +500,7 @@ if( ! function_exists( 'jobscout_footer_top' ) ) :
  * Footer Top
 */
 function jobscout_footer_top(){    
-    $footer_sidebars = array( 'footer-one', 'footer-two', 'footer-three', 'footer-four' );
+    $footer_sidebars = array(  'footer-four' );
     $active_sidebars = array();
     $sidebar_count   = 0;
     
