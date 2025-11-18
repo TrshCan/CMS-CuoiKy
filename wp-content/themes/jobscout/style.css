@@ -9607,3 +9607,201 @@ RESPONSIVE STYLESHEET
     color: #fff;
     font-weight: bold;
 }
+
+#news-banner {
+    width: 100vw !important; /* Quan trọng: 100% chiều rộng màn hình */
+    position: relative; /* Cần thiết để margin-left hoạt động chính xác */
+
+    /* Bù trừ khoảng trống bên trái (do container giới hạn) */
+    /* Công thức: margin-left: calc(50% - 50vw); */
+    /* Nó sẽ kéo phần tử từ vị trí hiện tại sang trái cho đến khi nó full màn hình */
+    margin-left: calc(50% - 50vw) !important;
+
+    /* Đảm bảo chiều cao và các thuộc tính khác */
+    height: 250px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-top: 0 !important; /* Đã có từ trước, giữ lại để sát header */
+}
+#news-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* màu đen, 40% opacity */
+    pointer-events: none; /* để không chặn tương tác với nội dung bên trong */
+}
+.news-banner .title {
+    color: #fff; /* Màu chữ trắng */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Tạo bóng cho chữ */
+    display: flex;
+    justify-content: center;
+}
+
+/* Loại bỏ margin/padding của phần tử ngay sau header (thường là site-main, content,...)
+   để banner sát lên trên */
+#primary-content-wrap, .site-main, .site-content {
+    /* Thay thế selector này bằng selector chính xác của phần tử bao quanh nội dung */
+    /* Nếu không chắc chắn, bạn có thể kiểm tra bằng công cụ Developer Tools (F12) */
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* --- GRID 2 COLUMN --- */
+.news-blog-section .news-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 420px)); /* card max-width 300px */
+    gap: 40px;
+    justify-content: center; /* căn giữa grid */
+}
+
+/* ITEM */
+.news-blog-section .news-item {
+    display: flex;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    align-items: flex-start;
+    gap: 24px;
+    overflow: hidden;
+    width: 100%; /* grid kiểm soát kích thước */
+    margin-bottom:10px ;
+}
+
+/* IMAGE */
+.news-blog-section .news-thumbnail {
+    width: 150px;  /* nhỏ hơn trước */
+    height: 100%;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.news-blog-section .news-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CONTENT */
+.news-blog-section .news-item h2 { font-size: 15px; margin: 0 0 10px; }
+.news-blog-section .news-item .excerpt { font-size: 14px; color: #555; }
+.news-blog-section .news-item h2 a { color: #111; text-decoration: none; }
+.news-blog-section .news-item h2 a:hover { color: #0073e6; }
+
+.site-content{ background: #f2f2f2; }
+.acc-content{
+    background: #f2f2f2;
+}
+.body{
+    background: #f2f2f2;
+}
+.read-more-btn{
+    color: #eb741a;
+}
+html, body {
+    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+.news-blog-section .news-section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #111;
+}
+#breadcrumbs {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+#breadcrumbs a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+#breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.news-detail-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 700px;        /* tăng rộng từ 600px lên 700px */
+    height: 120px;       /* tăng cao từ 100px lên 120px */
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    background-color: #fff;
+    gap: 20px;           /* khoảng cách giữa thumb và info */
+    margin: 20px auto;   /* margin auto để căn giữa màn hình */
+}
+
+/* Thumb hình vuông bên trái */
+.news-detail-thumb {
+    width: 80px;       /* vuông */
+    height: 80px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.news-detail-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Thông tin bên phải thumb */
+.news-detail-info {
+    flex: 1;           /* chiếm phần còn lại */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Tiêu đề */
+.news-detail-title {
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Hàng ngày đăng */
+.news-meta-row {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Hàng Category + Location nằm ngang */
+.news-meta-row.category-location {
+    display: flex;
+    gap: 15px;
+}
+
+/* Share button bên phải cuối card */
+.share-box {
+    display: flex;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+.share-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0073aa;
+    color: #fff;
+    cursor: pointer;
+}
+
+.share-btn:hover {
+    background-color: #005177;
+}
