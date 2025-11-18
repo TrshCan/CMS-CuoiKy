@@ -89,7 +89,7 @@ function jobscout_get_popular_section_title(){
  * Job Posting Section Title
 */
 function jobscout_get_job_posting_section_title(){
-    $job_posting_section_title = get_theme_mod( 'job_posting_section_title', __( 'Job Posting', 'jobscout' ) );
+    $job_posting_section_title = get_theme_mod( 'job_posting_section_title', __( 'Top Job', 'jobscout' ) );
 
     if ( $job_posting_section_title ){
         return esc_html( $job_posting_section_title );
