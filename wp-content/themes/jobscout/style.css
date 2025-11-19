@@ -9571,39 +9571,75 @@ RESPONSIVE STYLESHEET
     justify-content: center;
     align-items: center;
 }
-
-/* Đưa input + button lên cùng 1 dòng */
-.footer-t .wpcf7-form p {
+/* Footer Contact Form (Subscribe) */
+.footer-subscribe-t {
+    background: #eb741a;
+    padding: 20px 0;
     display: flex;
-    justify-content: center; /* căn giữa cả dòng */
-    align-items: center;
+    justify-content: center;
+}
+
+/* Wrapper căn giữa text + input + button */
+.subscribe-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* quan trọng */
     gap: 10px;
-    margin: 0;
-    width: 100%;
+    flex-wrap: wrap;
+    padding: 10px 0;
 }
 
-.wpcf7-form .cs_email_contact {
-    padding-left: 40px; /* chừa chỗ cho icon email */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%23ff9a3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><polyline points="4,4 12,12 20,4"/></svg>');
-    background-size: 25px 20px;
-    background-repeat: no-repeat;
-    background-position: 12px center; /* căn icon bên trái */
-    color: #fff; /* text trắng */
-    border: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/* Button trong suốt, viền trắng */
-.cs-btn-contact {
-    padding: 10px 16px;
-    background: none !important;
-    border: 1px solid #fff !important;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-}
-.before-text {
+/* Text bên trái */
+.subscribe-wrapper .before-text {
     color: #fff;
     font-weight: bold;
+    white-space: nowrap;
+}
+
+.cs_email_contact {
+
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #000;
+    padding-left: 30px !important; /* để nhường chỗ cho icon */
+    padding-right: 10px;
+    box-sizing: border-box;
+
+    /* Thêm icon email */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23eb741a" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.708 2.825L15 11.883V5.383zm-1.809 6.45L8 9.383 2.809 11.833A1 1 0 0 0 3 12h10a1 1 0 0 0 .191-.167zM1 11.883l4.708-3.675L1 5.383v6.5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: 10px center; /* canh icon */
+    background-size: 18px 18px; /* kích thước icon */
+}
+
+
+/* Button outline trắng, text trắng */
+.subscribe-wrapper .cs-btn-contact {
+    padding: 8px 16px;
+    background: none;
+    border: 2px solid #fff;
+    color: none !important;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.cs-btn-contact:hover {
+    background: #fff;
+    color: #2ace5e;
+}
+
+/* Responsive: trên mobile input chiếm hết chiều ngang, button xuống dòng */
+@media (max-width: 600px) {
+    .subscribe-wrapper {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .cs_email_contact,
+    .cs-btn-contact {
+        width: 100%;
+        text-align: center;
+    }
 }
