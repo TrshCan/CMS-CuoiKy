@@ -496,13 +496,10 @@ endif;
 add_action( 'jobscout_footer', 'jobscout_footer_start', 20 );
 
 
+
 /**
- * Footer Top
-*/
-if( ! function_exists( 'jobscout_footer_top' ) ) :
-/**
- * Footer Top
-*/
+ * Footer Subscribe / Contact Form
+ */
 if( ! function_exists( 'jobscout_footer_subscribe' ) ) :
     function jobscout_footer_subscribe() { ?>
         <div class="footer-t footer-subscribe-t">
@@ -513,58 +510,43 @@ if( ! function_exists( 'jobscout_footer_subscribe' ) ) :
             </div>
         </div>
     <?php }
-    endif;
-    add_action( 'jobscout_footer', 'jobscout_footer_subscribe', 10 ); // priority = 10, chạy trước
-    
-function jobscout_footer_top(){    
-    $footer_sidebars = array(  'footer-four' );
-    $active_sidebars = array();
-    $sidebar_count   = 0;
-    
-    foreach ( $footer_sidebars as $sidebar ) {
-        if( is_active_sidebar( $sidebar ) ){
-            array_push( $active_sidebars, $sidebar );
-            $sidebar_count++ ;
-        }
-    }
-                 
-    if( $active_sidebars ){ ?>
+endif;
+add_action( 'jobscout_footer', 'jobscout_footer_subscribe', 10 ); // priority 10 → chạy trước
+
+/**
+ * Footer Top - Logo, Menu, Social
+ */
 if( ! function_exists( 'jobscout_footer_top' ) ) :
-    /**
-     * Footer Top - custom content: logo, menu, social
-    */
     function jobscout_footer_top(){ ?>
         <div class="footer-t">
             <div class="container flex-footer">
                 <!-- Logo -->
                 <div class="footer-logo">
                     <a href="<?php echo esc_url( home_url('/') ); ?>">
-                    <?php bloginfo('name'); ?>
+                        <?php bloginfo('name'); ?>
                     </a>
                 </div>
-    
+
                 <!-- Menu -->
                 <div class="footer-menu">
                     <?php
                     wp_nav_menu(array(
-                        'theme_location' => 'primary', // hoặc tên menu bạn muốn dùng
+                        'theme_location' => 'primary', 
                         'menu_class' => 'footer-nav',
                         'container' => false,
                     ));
                     ?>
                 </div>
-    
+
                 <!-- Social Icons -->
                 <div class="footer-social">
-    <?php dynamic_sidebar('footer-social-sidebar'); ?>
-</div>
-
-
+                    <?php dynamic_sidebar('footer-social-sidebar'); ?>
+                </div>
             </div>
         </div>
     <?php }
 endif;    
-add_action( 'jobscout_footer', 'jobscout_footer_top', 30 );
+add_action( 'jobscout_footer', 'jobscout_footer_top', 30 ); // priority 30 → chạy sau
 
 if( ! function_exists( 'jobscout_footer_bottom' ) ) :
 /**

@@ -9607,7 +9607,7 @@ RESPONSIVE STYLESHEET
 }
 
 /* Làm footer mỏng */
-.footer-t {
+.footer-t .footer-subscribe-t {
     background: #eb741a;
     padding: 20px 0; /* chỉnh nhỏ hơn nếu muốn */
     display: flex;
