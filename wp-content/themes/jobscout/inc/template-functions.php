@@ -500,6 +500,36 @@ add_action( 'jobscout_footer', 'jobscout_footer_start', 20 );
  * Footer Top
 */
 if( ! function_exists( 'jobscout_footer_top' ) ) :
+/**
+ * Footer Top
+*/
+if( ! function_exists( 'jobscout_footer_subscribe' ) ) :
+    function jobscout_footer_subscribe() { ?>
+        <div class="footer-t footer-subscribe-t">
+            <div class="container">
+                <div class="subscribe-wrapper">
+                    <?php echo do_shortcode('[contact-form-7 id="6301af4" title="Contact form 1"]'); ?>
+                </div>
+            </div>
+        </div>
+    <?php }
+    endif;
+    add_action( 'jobscout_footer', 'jobscout_footer_subscribe', 10 ); // priority = 10, chạy trước
+    
+function jobscout_footer_top(){    
+    $footer_sidebars = array(  'footer-four' );
+    $active_sidebars = array();
+    $sidebar_count   = 0;
+    
+    foreach ( $footer_sidebars as $sidebar ) {
+        if( is_active_sidebar( $sidebar ) ){
+            array_push( $active_sidebars, $sidebar );
+            $sidebar_count++ ;
+        }
+    }
+                 
+    if( $active_sidebars ){ ?>
+if( ! function_exists( 'jobscout_footer_top' ) ) :
     /**
      * Footer Top - custom content: logo, menu, social
     */
