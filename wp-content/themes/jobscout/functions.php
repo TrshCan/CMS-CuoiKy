@@ -86,3 +86,10 @@ if( jobscout_is_woocommerce_activated() ){
 if( jobscout_is_wp_job_manager_activated() ) :
 	require get_template_directory() . '/inc/wp-job-manager-filters.php';
 endif;
+
+register_sidebar(array(
+    'name'          => 'Footer Social Sidebar',
+    'id'            => 'footer-social-sidebar',
+    'before_widget' => '<div class="footer-social-widget">',
+    'after_widget'  => '</div>',
+));

@@ -3301,8 +3301,49 @@ section.client-section {
 /*==========================
 SITE FOOTER SECTION
 ==========================*/
+
+.flex-footer {
+    display: flex;
+    justify-content: center; /* căn giữa theo chiều ngang */
+    align-items: center;     /* căn giữa theo chiều dọc */
+    gap: 50px;               /* khoảng cách giữa logo, menu, social */
+    flex-wrap: wrap;         /* xuống dòng nếu màn hình nhỏ */
+    text-align: center;
+    flex-direction: column;
+}
+
+.footer-logo a {
+    font-size: 20px;
+    color:black;
+    font-weight: bold;
+}
+
+.footer-menu .footer-nav {
+    display: flex;
+    gap: 20px;
+      
+    list-style: none;
+    
+    padding: 0;
+    margin: 0;
+}
+.footer-nav,
+.footer-nav li,
+.footer-nav a {
+    background: none;      /* xóa màu nền */
+    color: inherit;        /* kế thừa màu chữ từ parent */
+    text-decoration: none; /* xóa gạch chân */
+}
+
+.footer-menu .footer-nav li {
+    display: inline-block;
+    
+}
+
+
+
 .footer-t {
-    background: #ededed;
+
     padding-top: 60px;
     color: #000000 !important;
 }
