@@ -3302,7 +3302,7 @@ section.client-section {
 SITE FOOTER SECTION
 ==========================*/
 .footer-t {
-    background: #ededed;
+    background: #ffffff !important;
     padding-top: 60px;
     color: #000000 !important;
 }
@@ -9714,94 +9714,393 @@ html, body {
     margin-bottom: 40px;
     color: #111;
 }
+/* Breadcrumb Styling for News Detail */
 #breadcrumbs {
-    text-align: center;
-    margin: 20px 0;
+    margin: 20px 0 30px;
+    padding: 15px 0;
     font-size: 14px;
-    color: #555;
+    background-color: #fafafa;
+}
+
+#breadcrumbs p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 #breadcrumbs a {
-    color: #0073e6;
+    color: #d2691e;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 #breadcrumbs a:hover {
-    text-decoration: underline;
+    color: #b85a1a;
+    text-decoration: none;
 }
 
+#breadcrumbs span {
+    color: #999;
+    margin: 0 4px;
+}
+
+#breadcrumbs span:last-child {
+    color: #666;
+    font-weight: 500;
+}
+
+/* Yoast SEO Breadcrumb specific styling */
+#breadcrumbs .breadcrumb_last,
+#breadcrumbs .breadcrumb_last a {
+    color: #666 !important;
+    font-weight: 500;
+    pointer-events: none;
+    cursor: default;
+}
+
+#breadcrumbs .breadcrumb_sep {
+    color: #ccc;
+    margin: 0 8px;
+}
+
+/* News Detail Wrapper */
+.news-detail-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* News Detail Header Card */
 .news-detail-header {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 700px;        /* tăng rộng từ 600px lên 700px */
-    height: 120px;       /* tăng cao từ 100px lên 120px */
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
     background-color: #fff;
-    gap: 20px;           /* khoảng cách giữa thumb và info */
-    margin: 20px auto;   /* margin auto để căn giữa màn hình */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
 }
 
 /* Thumb hình vuông bên trái */
 .news-detail-thumb {
-    width: 80px;       /* vuông */
-    height: 80px;
+    width: 120px;
+    height: 120px;
     flex-shrink: 0;
     overflow: hidden;
+    border-radius: 4px;
 }
 
 .news-detail-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* Thông tin bên phải thumb */
 .news-detail-info {
-    flex: 1;           /* chiếm phần còn lại */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+    gap: 10px;
 }
 
 /* Tiêu đề */
 .news-detail-title {
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: 700;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.3;
+    color: #000;
 }
 
 /* Hàng ngày đăng */
 .news-meta-row {
-    font-size: 12px;
-    color: #555;
+    font-size: 14px;
+    color: #666;
+    margin: 0;
 }
 
 /* Hàng Category + Location nằm ngang */
 .news-meta-row.category-location {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
+
 }
 
-/* Share button bên phải cuối card */
+.news-meta-row.category-location span {
+    font-size: 14px;
+    color: #666;
+    background: #f7f7f7;
+    border-radius: 8px; /* Bo tròn góc */
+    padding: 2px 6px; /* Thêm padding để nhìn đẹp hơn */
+}
+
+
+.news-meta-row.category-location a {
+    color: #666;
+    text-decoration: none;
+}
+
+.news-meta-row.category-location a:hover {
+    text-decoration: underline;
+}
+
+
 .share-box {
+    margin-left: auto;                /* đẩy sát về bên phải - đây là key! */
+    flex-shrink: 0;
+    align-self: center;               /* căn giữa theo chiều dọc (giữa top và bottom) */
     display: flex;
-    align-items: flex-end;
-    margin-left: auto;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .share-btn {
-    padding: 6px 12px;
-    font-size: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #0073aa;
-    color: #fff;
+    padding: 15px 55px;               /* giống pixel-perfect với ảnh gốc */
+    border: 2px solid #000;         /* viền đen mảnh nhưng rõ */
+    background: transparent;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    /* Thêm dòng này để góc vuông 100% */
+    border-radius: 0 !important;
 }
 
+/* Hover giống như nhiều site hiện đại (tùy chọn) */
 .share-btn:hover {
-    background-color: #005177;
+    background: #000;
+    color: #fff;
 }
+
+
+
+
+
+.footer_One {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    overflow: hidden;
+
+/* footer có icon */
+}
+
+.footer_One li {
+    list-style: none;
+    white-space: nowrap;
+    color: #000 !important;
+}
+
+.footer_One li a {
+    color: #000 !important;
+}
+
+/* Ẩn item từ số 6 trở đi */
+.footer_One li:nth-child(n+7) {
+    display: none;
+}
+/* News Detail Content */
+.news-detail-content {
+    background-color: #fff;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.news-detail-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.news-detail-content figure {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.news-detail-content figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* News Section Title */
+.news-section-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin: 50px 0 30px;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* News List Grid */
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* News Item Card - Layout ngang (hình bên trái, nội dung bên phải) */
+.news-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+
+/* News Thumbnail - Hình vuông bên trái */
+.news-thumbnail {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin: 10px 0 10px 10px;
+}
+
+.news-thumbnail a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.news-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+
+
+/* News Content - Nội dung bên phải */
+.news-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+}
+
+.news-content h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 15px;
+    line-height: 1.4;
+}
+
+.news-content h2 a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+
+
+/* Excerpt */
+.news-content .excerpt {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.news-content .excerpt p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+/* Read More Button */
+.read-more-btn {
+    display: inline-block;
+    color: #ff6600;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: auto;
+    transition: color 0.3s ease;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .news-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .news-thumbnail {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .news-detail-thumb {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .share-box {
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 0;
+    }
+    
+    .share-btn {
+        width: 100%;
+    }
+    
+    .news-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-item {
+        flex-direction: column;
+    }
+    
+    .news-thumbnail {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .news-section-title {
+        font-size: 24px;
+    }
+    
+    .news-detail-content {
+        padding: 20px;
+    }
+}
+

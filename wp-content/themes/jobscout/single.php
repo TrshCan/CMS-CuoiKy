@@ -4,9 +4,14 @@ get_header();
 
 <div class="news-detail-wrapper container">
 
-    <?php if ( function_exists('yoast_breadcrumb') ) {
-        yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-    } ?>
+    <!-- Breadcrumb Navigation -->
+    <div id="breadcrumbs" class="news-breadcrumb">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/news' ) ); ?>">All News</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">News Detail</span>
+    </div>
 
     <!-- Card news-detail-header -->
     <div class="news-detail-header">
