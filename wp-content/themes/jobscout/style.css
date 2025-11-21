@@ -2558,10 +2558,9 @@ SITE BANNER WITH VIDEO
     opacity: 1;
     filter: alpha(opacity=100);
 }
-
-/*=======================
+/*=========================
 CATEGORY SECTION
-=======================*/
+=========================*/
 section.category-section {
     margin: 70px 0;
 }
@@ -2570,15 +2569,33 @@ section.category-section .container {
     display: flex;
     flex: 1;
     flex-flow: row wrap;
+    justify-content: center; /* căn giữa các item */
 }
 
 section.category-section .widget_rrtc_icon_text_widget {
     width: 22%;
     text-align: center;
-    margin-bottom: 40px;
-    margin-right: 1.5%;
-    margin-left: 1.5%;
+    margin: 0 1.5% 40px;
 }
+
+/* Responsive: màn hình nhỏ */
+@media (max-width: 1024px) {
+    section.category-section .widget_rrtc_icon_text_widget {
+        width: 30.33%; /* nếu muốn tablet thì width lớn hơn desktop */
+    }
+}
+
+@media (max-width: 768px) {
+    section.category-section .container {
+        flex-direction: column;
+    }
+
+    section.category-section .widget_rrtc_icon_text_widget {
+        width: 100%;
+        margin: 0 0 20px;
+    }
+}
+
 
 /*=============================
 TOP JOB SECTION
@@ -7035,37 +7052,65 @@ RESPONSIVE STYLESHEET
         width: 100%;
     }
 
-    /*=======================
-	SITE BANNER
-	=======================*/
-    .site-banner .wp-custom-header {
-        height: 660px;
-    }
+   /*=========================
+SITE BANNER
+=========================*/
+.site-banner .wp-custom-header {
+    height: 660px;
+}
 
-    .site-banner .item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.site-banner .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .banner-caption .title {
-        line-height: 1.15;
-    }
+.banner-caption .title {
+    line-height: 1.15;
+}
+
+/* Job Filters trong banner */
+.banner-caption .jobscout_job_filters .search_jobs {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs div.filter_first,
+.banner-caption .jobscout_job_filters .search_jobs div.search_keywords,
+.banner-caption .jobscout_job_filters .search_jobs div.filter_last,
+.banner-caption .jobscout_job_filters .search_jobs div.search_location {
+    margin-bottom: 1px;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input,
+.banner-caption .jobscout_job_filters .search_jobs select {
+    border-left: none;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input[type="submit"] {
+    background-image: none;
+    width: 100%;
+    text-indent: 0;
+    margin-top: 1px;
+    border-left: none;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input[type="submit"]:hover {
+    background-image: none;
+}
+
 
     /*=========================
 	CATEGORY SECTION
 	=========================*/
-    section.category-section .container {
+    /* section.category-section .container {
         justify-content: center;
     }
 
     section.category-section .widget_rrtc_icon_text_widget {
         width: 30.33%;
-    }
+    } */
 
-    /*=========================
-	TOP JOB SECTION
-	=========================*/
     .top-job-section .row div.job_listings article,
     .site-main .entry-content div.job_listings div.job_listings article {
         flex-direction: column;
@@ -7100,9 +7145,6 @@ RESPONSIVE STYLESHEET
         gap: 10px;
     }
 
-    /*=========================
-	HOWITWORK SECTION
-	=========================*/
     .howitwork-section .step-wrap {
         margin-top: 0;
     }
@@ -7116,9 +7158,6 @@ RESPONSIVE STYLESHEET
         display: none;
     }
 
-    /*==========================
-	ARTICLE SECTION
-	==========================*/
     .article-section .article-wrap {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -7127,18 +7166,12 @@ RESPONSIVE STYLESHEET
         display: none;
     }
 
-    /*===========================
-	CLIENT SECTION
-	===========================*/
     section[class*="-section"]
         .widget_raratheme_client_logo_widget
         .image-holder {
         width: 31.33%;
     }
 
-    /*=======================
-	SITE FOOTER SECTION
-	=======================*/
     .site-footer .grid.column-4 > .col,
     .site-footer .grid.column-3 > .col {
         width: 48.33%;
@@ -7181,9 +7214,6 @@ RESPONSIVE STYLESHEET
         height: 400px;
     }
 
-    /*=============================
-	SINGLE JOB PAGE
-	=============================*/
     .single-job:not(.full-width) #primary,
     .single-job #secondary {
         width: 100%;
@@ -7304,7 +7334,7 @@ RESPONSIVE STYLESHEET
     /*========================
 	SITE BANNER
 	========================*/
-    .banner-caption .jobscout_job_filters .search_jobs {
+    /* .banner-caption .jobscout_job_filters .search_jobs {
         flex-direction: column;
     }
 
@@ -7333,12 +7363,12 @@ RESPONSIVE STYLESHEET
         .search_jobs
         input[type="submit"]:hover {
         background-image: none;
-    }
+    } */
 
     /*=======================
 	CATEGORY SECTION
 	=======================*/
-    section.category-section .container {
+    /* section.category-section .container {
         flex-direction: column;
     }
 
@@ -7346,11 +7376,8 @@ RESPONSIVE STYLESHEET
         width: 100%;
         margin-left: 0;
         margin-right: 0;
-    }
+    } */
 
-    /*=========================
-	TOP JOB SECTION
-	=========================*/
     .top-job-section .row .job_listings .job_listings,
     .site-main .entry-content div.job_listings div.job_listings {
         flex-direction: column;
@@ -7380,9 +7407,6 @@ RESPONSIVE STYLESHEET
         padding-left: 0;
     }
 
-    /*========================
-	HOWITWORK SECTION
-	========================*/
     .howitwork-section .step-wrap {
         flex-direction: column;
     }
@@ -7429,9 +7453,6 @@ RESPONSIVE STYLESHEET
         margin-top: 30px;
     }
 
-    /*==========================
-	ARTICLE SECTION
-	==========================*/
     .article-section .article-wrap {
         grid-template-columns: repeat(1, 1fr);
         margin-top: 30px;
@@ -7468,9 +7489,6 @@ RESPONSIVE STYLESHEET
         text-align: center;
     }
 
-    /*===========================
-	CLIENT SECTION
-	===========================*/
     section.client-section {
         margin-bottom: 40px;
     }
@@ -7484,9 +7502,6 @@ RESPONSIVE STYLESHEET
         margin-top: 0;
     }
 
-    /*============================
-	SITE FOOTER SECTION
-	============================*/
     .site-footer .grid:not(.column-1) {
         flex-direction: column;
     }
@@ -7535,9 +7550,6 @@ RESPONSIVE STYLESHEET
         width: 100%;
     }
 
-    /*============================
-	SINGLE JOB PAGE
-	============================*/
     .single-job .site-content > .entry-header {
         min-height: 310px;
     }
