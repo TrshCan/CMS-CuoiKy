@@ -8,7 +8,7 @@ get_header();
     <div id="breadcrumbs" class="news-breadcrumb">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
         <span class="breadcrumb-separator">/</span>
-        <a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/news' ) ); ?>">All News</a>
+        <a href="<?php echo esc_url( home_url( '/news' ) ); ?>">All News</a>
         <span class="breadcrumb-separator">/</span>
         <span class="breadcrumb-current">News Detail</span>
     </div>
