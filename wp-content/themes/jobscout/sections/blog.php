@@ -5,8 +5,8 @@
  * @package JobScout
  */
 
-$blog_heading = get_theme_mod( 'blog_section_title', __( 'Latest Articles', 'jobscout' ) );
-$sub_title    = get_theme_mod( 'blog_section_subtitle', __( 'We will help you find it. We are your first step to becoming everything you want to be.', 'jobscout' ) );
+$blog_heading = get_theme_mod( 'blog_section_title', __( 'NEWEST BLOG ENTRIES', 'jobscout' ) );
+//$sub_title    = get_theme_mod( 'blog_section_subtitle', __( 'jobscout' ) );
 $blog         = get_option( 'page_for_posts' );
 $label        = get_theme_mod( 'blog_view_all', __( 'See More Posts', 'jobscout' ) );
 $hide_author  = get_theme_mod( 'ed_post_author', false );
@@ -22,12 +22,12 @@ $args = array(
 
 $qry = new WP_Query( $args );
 
-if( $ed_blog && ( $blog_heading || $sub_title || $qry->have_posts() ) ){ ?>
+if( $ed_blog && ( $blog_heading  || $qry->have_posts() ) ){ ?> <!-- || $sub_title -->
 <section id="blog-section" class="article-section">
 	<div class="container">
         <?php 
             if( $blog_heading ) echo '<h2 class="section-title">' . esc_html( $blog_heading ) . '</h2>';
-            if( $sub_title ) echo '<div class="section-desc">' . wpautop( wp_kses_post( $sub_title ) ) . '</div>'; 
+//            if( $sub_title ) echo '<div class="section-desc">' . wpautop( wp_kses_post( $sub_title ) ) . '</div>';
         ?>
         
         <?php if( $qry->have_posts() ){ ?>

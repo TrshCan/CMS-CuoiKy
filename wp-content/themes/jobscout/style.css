@@ -1120,20 +1120,21 @@ body.custom-background .site {
 
 a.btn {
     display: inline-block;
-    background: #2ace5e;
-    border: 1px solid #2ace5e;
+    background: #eb741a;
+    /*border: 1px solid #2ace5e;*/
     color: #fff;
     font-weight: 700;
 
     font-size: 0.888em;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     padding: 10px 18px;
 }
 
 a.btn:hover,
 a.btn:focus {
     background: none;
-    color: #2ace5e;
+    border: 1px solid #eb741a;
+    color: rgba(0, 0, 0, 0.51);
 }
 
 a.btn:focus {
@@ -2200,29 +2201,46 @@ body.home:not(.banner-enabled) .site-header {
     display: none;
 }
 
+/*==============================
+MAIN MENU
+==============================*/
 .main-navigation ul li {
-    font-size: 0.888em;
     display: inline-block;
     position: relative;
     vertical-align: middle;
+    font-size: 0.888em;
     font-weight: 700;
 }
 
+/* Menu links */
 .main-navigation ul li a {
     display: inline-block;
     vertical-align: middle;
     padding: 17px;
-    color: #000;
+    color: #000; /* chữ đen mặc định */
+    text-decoration: none;
+    border-bottom: 3px solid transparent; /* mặc định không gạch */
+    transition: all 0.3s ease;
 }
 
-.main-navigation ul li:hover > a,
+/* Hover: không đổi gì */
+.main-navigation ul li:hover > a {
+    /* không đổi màu, không gạch */
+}
+
+/* Active menu: gạch cam, chữ vẫn đen */
 .main-navigation ul li.current-menu-item > a,
 .main-navigation ul li.current_page_item > a,
 .main-navigation ul li.current-menu-ancestor > a,
 .main-navigation ul li.current_page_ancestor > a {
-    color: #2ace5e;
+    border-bottom: 3px solid #EB741A;
+    color: #000;
+
 }
 
+/*==============================
+SUBMENU DROPDOWN
+==============================*/
 .main-navigation ul li ul {
     position: absolute;
     top: calc(100% + 10px);
@@ -2231,9 +2249,11 @@ body.home:not(.banner-enabled) .site-header {
     background: #fff;
     width: 230px;
     opacity: 0;
+    visibility: hidden;
     z-index: 999;
     margin-left: -9999px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .main-navigation ul li:focus > ul,
@@ -2241,7 +2261,7 @@ body.home:not(.banner-enabled) .site-header {
 .main-navigation ul li.hover > ul {
     top: 100%;
     opacity: 1;
-    filter: alpha(opacity=100);
+    visibility: visible;
     margin-left: 0;
 }
 
@@ -2290,6 +2310,9 @@ body.home:not(.banner-enabled) .site-header {
     border-bottom: none;
 }
 
+/*==============================
+BUTTON WRAP
+==============================*/
 .menu-wrap .btn-wrap {
     width: 150px;
     text-align: right;
@@ -2535,10 +2558,9 @@ SITE BANNER WITH VIDEO
     opacity: 1;
     filter: alpha(opacity=100);
 }
-
-/*=======================
+/*=========================
 CATEGORY SECTION
-=======================*/
+=========================*/
 section.category-section {
     margin: 70px 0;
 }
@@ -2547,15 +2569,33 @@ section.category-section .container {
     display: flex;
     flex: 1;
     flex-flow: row wrap;
+    justify-content: center; /* căn giữa các item */
 }
 
 section.category-section .widget_rrtc_icon_text_widget {
     width: 22%;
     text-align: center;
-    margin-bottom: 40px;
-    margin-right: 1.5%;
-    margin-left: 1.5%;
+    margin: 0 1.5% 40px;
 }
+
+/* Responsive: màn hình nhỏ */
+@media (max-width: 1024px) {
+    section.category-section .widget_rrtc_icon_text_widget {
+        width: 30.33%; /* nếu muốn tablet thì width lớn hơn desktop */
+    }
+}
+
+@media (max-width: 768px) {
+    section.category-section .container {
+        flex-direction: column;
+    }
+
+    section.category-section .widget_rrtc_icon_text_widget {
+        width: 100%;
+        margin: 0 0 20px;
+    }
+}
+
 
 /*=============================
 TOP JOB SECTION
@@ -3278,8 +3318,49 @@ section.client-section {
 /*==========================
 SITE FOOTER SECTION
 ==========================*/
+
+.flex-footer {
+    display: flex;
+    justify-content: center; /* căn giữa theo chiều ngang */
+    align-items: center;     /* căn giữa theo chiều dọc */
+    gap: 50px;               /* khoảng cách giữa logo, menu, social */
+    flex-wrap: wrap;         /* xuống dòng nếu màn hình nhỏ */
+    text-align: center;
+    flex-direction: column;
+}
+
+.footer-logo a {
+    font-size: 20px;
+    color:black;
+    font-weight: bold;
+}
+
+.footer-menu .footer-nav {
+    display: flex;
+    gap: 20px;
+      
+    list-style: none;
+    
+    padding: 0;
+    margin: 0;
+}
+.footer-nav,
+.footer-nav li,
+.footer-nav a {
+    background: none;      /* xóa màu nền */
+    color: inherit;        /* kế thừa màu chữ từ parent */
+    text-decoration: none; /* xóa gạch chân */
+}
+
+.footer-menu .footer-nav li {
+    display: inline-block;
+    
+}
+
+
+
 .footer-t {
-    background: #ededed;
+
     padding-top: 60px;
     color: #000000 !important;
 }
@@ -5077,6 +5158,29 @@ WIDGET TESTIMONIAL
 /*=========================
 WIDGET CALL TO ACTION
 =========================*/
+#cta-section .bttk-cta-bg {
+    padding: 30px 20px; /* giảm padding trên/dưới */
+    min-height: 200px;   /* đảm bảo cao tối thiểu */
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+#cta-section .bttk-cta-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* màu đen với 50% opacity */
+    z-index: 0; /* đặt dưới nội dung */
+}
+#cta-section .bttk-cta-bg > .raratheme-cta-container {
+    position: relative;
+    z-index: 1; /* nội dung lên trên overlay */
+}
+
+
 .widget_raratheme_companion_cta_widget .bttk-cta-bg,
 .widget_raratheme_companion_cta_widget .text {
     padding: 100px 0;
@@ -5147,19 +5251,16 @@ WIDGET CALL TO ACTION
 
 .widget_raratheme_companion_cta_widget a.btn-cta {
     display: inline-block;
-    background: #2ace5e;
-    border: 1px solid #2ace5e;
+    border: 1px solid white;
     color: #fff;
     font-weight: 700;
     margin: 5px;
     font-size: 0.888em;
-    border-radius: 5px;
     padding: 10px 18px;
 }
 
 .widget_raratheme_companion_cta_widget a.btn-cta:hover {
-    background: none;
-    color: #2ace5e;
+    background: rgba(255, 255, 255, 0.51);
 }
 
 .widget_raratheme_companion_cta_widget .text a.btn-cta {
@@ -6951,37 +7052,65 @@ RESPONSIVE STYLESHEET
         width: 100%;
     }
 
-    /*=======================
-	SITE BANNER
-	=======================*/
-    .site-banner .wp-custom-header {
-        height: 660px;
-    }
+   /*=========================
+SITE BANNER
+=========================*/
+.site-banner .wp-custom-header {
+    height: 660px;
+}
 
-    .site-banner .item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.site-banner .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .banner-caption .title {
-        line-height: 1.15;
-    }
+.banner-caption .title {
+    line-height: 1.15;
+}
+
+/* Job Filters trong banner */
+.banner-caption .jobscout_job_filters .search_jobs {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs div.filter_first,
+.banner-caption .jobscout_job_filters .search_jobs div.search_keywords,
+.banner-caption .jobscout_job_filters .search_jobs div.filter_last,
+.banner-caption .jobscout_job_filters .search_jobs div.search_location {
+    margin-bottom: 1px;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input,
+.banner-caption .jobscout_job_filters .search_jobs select {
+    border-left: none;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input[type="submit"] {
+    background-image: none;
+    width: 100%;
+    text-indent: 0;
+    margin-top: 1px;
+    border-left: none;
+}
+
+.banner-caption .jobscout_job_filters .search_jobs input[type="submit"]:hover {
+    background-image: none;
+}
+
 
     /*=========================
 	CATEGORY SECTION
 	=========================*/
-    section.category-section .container {
+    /* section.category-section .container {
         justify-content: center;
     }
 
     section.category-section .widget_rrtc_icon_text_widget {
         width: 30.33%;
-    }
+    } */
 
-    /*=========================
-	TOP JOB SECTION
-	=========================*/
     .top-job-section .row div.job_listings article,
     .site-main .entry-content div.job_listings div.job_listings article {
         flex-direction: column;
@@ -7016,9 +7145,6 @@ RESPONSIVE STYLESHEET
         gap: 10px;
     }
 
-    /*=========================
-	HOWITWORK SECTION
-	=========================*/
     .howitwork-section .step-wrap {
         margin-top: 0;
     }
@@ -7032,9 +7158,6 @@ RESPONSIVE STYLESHEET
         display: none;
     }
 
-    /*==========================
-	ARTICLE SECTION
-	==========================*/
     .article-section .article-wrap {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -7043,18 +7166,12 @@ RESPONSIVE STYLESHEET
         display: none;
     }
 
-    /*===========================
-	CLIENT SECTION
-	===========================*/
     section[class*="-section"]
         .widget_raratheme_client_logo_widget
         .image-holder {
         width: 31.33%;
     }
 
-    /*=======================
-	SITE FOOTER SECTION
-	=======================*/
     .site-footer .grid.column-4 > .col,
     .site-footer .grid.column-3 > .col {
         width: 48.33%;
@@ -7097,9 +7214,6 @@ RESPONSIVE STYLESHEET
         height: 400px;
     }
 
-    /*=============================
-	SINGLE JOB PAGE
-	=============================*/
     .single-job:not(.full-width) #primary,
     .single-job #secondary {
         width: 100%;
@@ -7220,7 +7334,7 @@ RESPONSIVE STYLESHEET
     /*========================
 	SITE BANNER
 	========================*/
-    .banner-caption .jobscout_job_filters .search_jobs {
+    /* .banner-caption .jobscout_job_filters .search_jobs {
         flex-direction: column;
     }
 
@@ -7249,12 +7363,12 @@ RESPONSIVE STYLESHEET
         .search_jobs
         input[type="submit"]:hover {
         background-image: none;
-    }
+    } */
 
     /*=======================
 	CATEGORY SECTION
 	=======================*/
-    section.category-section .container {
+    /* section.category-section .container {
         flex-direction: column;
     }
 
@@ -7262,11 +7376,8 @@ RESPONSIVE STYLESHEET
         width: 100%;
         margin-left: 0;
         margin-right: 0;
-    }
+    } */
 
-    /*=========================
-	TOP JOB SECTION
-	=========================*/
     .top-job-section .row .job_listings .job_listings,
     .site-main .entry-content div.job_listings div.job_listings {
         flex-direction: column;
@@ -7296,9 +7407,6 @@ RESPONSIVE STYLESHEET
         padding-left: 0;
     }
 
-    /*========================
-	HOWITWORK SECTION
-	========================*/
     .howitwork-section .step-wrap {
         flex-direction: column;
     }
@@ -7345,9 +7453,6 @@ RESPONSIVE STYLESHEET
         margin-top: 30px;
     }
 
-    /*==========================
-	ARTICLE SECTION
-	==========================*/
     .article-section .article-wrap {
         grid-template-columns: repeat(1, 1fr);
         margin-top: 30px;
@@ -7384,9 +7489,6 @@ RESPONSIVE STYLESHEET
         text-align: center;
     }
 
-    /*===========================
-	CLIENT SECTION
-	===========================*/
     section.client-section {
         margin-bottom: 40px;
     }
@@ -7400,9 +7502,6 @@ RESPONSIVE STYLESHEET
         margin-top: 0;
     }
 
-    /*============================
-	SITE FOOTER SECTION
-	============================*/
     .site-footer .grid:not(.column-1) {
         flex-direction: column;
     }
@@ -7451,9 +7550,6 @@ RESPONSIVE STYLESHEET
         width: 100%;
     }
 
-    /*============================
-	SINGLE JOB PAGE
-	============================*/
     .single-job .site-content > .entry-header {
         min-height: 310px;
     }
@@ -9521,3 +9617,601 @@ RESPONSIVE STYLESHEET
 #blog-section {
     background: #F5F5F7;
 }
+
+/* Làm footer mỏng */
+.footer-t .footer-subscribe-t {
+    background: #eb741a;
+    padding: 20px 0; /* chỉnh nhỏ hơn nếu muốn */
+    display: flex;
+    justify-content: center;
+}
+
+/* Xóa khoảng trống mặc định bên trong */
+.footer-t .container,
+.footer-t .grid,
+.footer-t .col,
+.footer-t section,
+.footer-t p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Canh giữa toàn bộ form */
+.footer-t .grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Footer Contact Form (Subscribe) */
+.footer-subscribe-t {
+    background: #eb741a;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Wrapper căn giữa text + input + button */
+.subscribe-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* quan trọng */
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+/* Text bên trái */
+.subscribe-wrapper .before-text {
+    color: #fff;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.cs_email_contact {
+
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #000;
+    padding-left: 30px !important; /* để nhường chỗ cho icon */
+    padding-right: 10px;
+    box-sizing: border-box;
+
+    /* Thêm icon email */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23eb741a" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.708 2.825L15 11.883V5.383zm-1.809 6.45L8 9.383 2.809 11.833A1 1 0 0 0 3 12h10a1 1 0 0 0 .191-.167zM1 11.883l4.708-3.675L1 5.383v6.5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: 10px center; /* canh icon */
+    background-size: 18px 18px; /* kích thước icon */
+}
+
+
+/* Button outline trắng, text trắng */
+.subscribe-wrapper .cs-btn-contact {
+    padding: 8px 16px;
+    background: none;
+    border: 2px solid #fff;
+    color: none !important;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.cs-btn-contact:hover {
+    background: #fff;
+    color: #2ace5e;
+}
+
+/* Responsive: trên mobile input chiếm hết chiều ngang, button xuống dòng */
+@media (max-width: 600px) {
+    .subscribe-wrapper {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .cs_email_contact,
+    .cs-btn-contact {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+#news-banner {
+    width: 100vw !important; /* Quan trọng: 100% chiều rộng màn hình */
+    position: relative; /* Cần thiết để margin-left hoạt động chính xác */
+
+    /* Bù trừ khoảng trống bên trái (do container giới hạn) */
+    /* Công thức: margin-left: calc(50% - 50vw); */
+    /* Nó sẽ kéo phần tử từ vị trí hiện tại sang trái cho đến khi nó full màn hình */
+    margin-left: calc(50% - 50vw) !important;
+
+    /* Đảm bảo chiều cao và các thuộc tính khác */
+    height: 250px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-top: 0 !important; /* Đã có từ trước, giữ lại để sát header */
+}
+#news-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* màu đen, 40% opacity */
+    pointer-events: none; /* để không chặn tương tác với nội dung bên trong */
+}
+.news-banner .title {
+    color: #fff; /* Màu chữ trắng */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Tạo bóng cho chữ */
+    display: flex;
+    justify-content: center;
+}
+
+/* Loại bỏ margin/padding của phần tử ngay sau header (thường là site-main, content,...)
+   để banner sát lên trên */
+#primary-content-wrap, .site-main, .site-content {
+    /* Thay thế selector này bằng selector chính xác của phần tử bao quanh nội dung */
+    /* Nếu không chắc chắn, bạn có thể kiểm tra bằng công cụ Developer Tools (F12) */
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* --- GRID 2 COLUMN --- */
+.news-blog-section .news-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 550px)); /* card max-width tăng lên */
+    gap: 40px;
+    justify-content: center; /* căn giữa grid */
+}
+
+/* ITEM */
+.news-blog-section .news-item {
+    display: flex;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    align-items: flex-start;
+    gap: 24px;
+    overflow: hidden;
+    width: 100%; /* grid kiểm soát kích thước */
+    margin-bottom: 10px;
+}
+
+/* IMAGE */
+.news-blog-section .news-thumbnail {
+     width: 200px;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin: 10px 0 10px 10px;
+}
+
+.news-blog-section .news-thumbnail img {
+     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* CONTENT */
+.news-blog-section .news-item h2 { font-size: 15px; margin: 0 0 10px; }
+.news-blog-section .news-item .excerpt { font-size: 14px; color: #555; }
+.news-blog-section .news-item h2 a { color: #111; text-decoration: none; }
+.news-blog-section .news-item h2 a:hover { color: #0073e6; }
+
+.site-content{ background: #f2f2f2; }
+.acc-content{
+    background: #f2f2f2;
+}
+.body{
+    background: #f2f2f2;
+}
+.read-more-btn{
+    color: #eb741a;
+}
+html, body {
+    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+.news-blog-section .news-section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #111;
+}
+/* Breadcrumb Styling for News Detail */
+#breadcrumbs {
+    margin: 20px 0 30px;
+    padding: 15px 0;
+    font-size: 14px;
+    background-color: #fafafa;
+}
+
+#breadcrumbs p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+#breadcrumbs a {
+    color: #d2691e;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#breadcrumbs a:hover {
+    color: #b85a1a;
+    text-decoration: none;
+}
+
+#breadcrumbs span {
+    color: #999;
+    margin: 0 4px;
+}
+
+#breadcrumbs span:last-child {
+    color: #666;
+    font-weight: 500;
+}
+
+/* Yoast SEO Breadcrumb specific styling */
+#breadcrumbs .breadcrumb_last,
+#breadcrumbs .breadcrumb_last a {
+    color: #666 !important;
+    font-weight: 500;
+    pointer-events: none;
+    cursor: default;
+}
+
+#breadcrumbs .breadcrumb_sep {
+    color: #ccc;
+    margin: 0 8px;
+}
+
+/* News Detail Wrapper */
+.news-detail-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* News Detail Header Card */
+.news-detail-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Thumb hình vuông bên trái */
+.news-detail-thumb {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.news-detail-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Thông tin bên phải thumb */
+.news-detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Tiêu đề */
+.news-detail-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+    color: #000;
+}
+
+/* Hàng ngày đăng */
+.news-meta-row {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* Hàng Category + Location nằm ngang */
+.news-meta-row.category-location {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+
+}
+
+.news-meta-row.category-location span {
+    font-size: 14px;
+    color: #666;
+    background: #f7f7f7;
+    border-radius: 8px; /* Bo tròn góc */
+    padding: 2px 6px; /* Thêm padding để nhìn đẹp hơn */
+}
+
+
+.news-meta-row.category-location a {
+    color: #666;
+    text-decoration: none;
+}
+
+.news-meta-row.category-location a:hover {
+    text-decoration: underline;
+}
+
+
+.share-box {
+    margin-left: auto;                /* đẩy sát về bên phải - đây là key! */
+    flex-shrink: 0;
+    align-self: center;               /* căn giữa theo chiều dọc (giữa top và bottom) */
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.share-btn {
+    padding: 15px 55px;               /* giống pixel-perfect với ảnh gốc */
+    border: 2px solid #000;         /* viền đen mảnh nhưng rõ */
+    background: transparent;
+    color: #000;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    /* Thêm dòng này để góc vuông 100% */
+    border-radius: 0 !important;
+}
+
+/* Hover giống như nhiều site hiện đại (tùy chọn) */
+.share-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+
+
+
+.footer_One {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    overflow: hidden;
+
+/* footer có icon */
+}
+
+.footer_One li {
+    list-style: none;
+    white-space: nowrap;
+    color: #000 !important;
+}
+
+.footer_One li a {
+    color: #000 !important;
+}
+
+/* Ẩn item từ số 6 trở đi */
+.footer_One li:nth-child(n+7) {
+    display: none;
+}
+/* News Detail Content */
+.news-detail-content {
+    background-color: #fff;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.news-detail-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.news-detail-content figure {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.news-detail-content figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* News Section Title */
+.news-section-title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin: 50px 0 30px;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* News List Grid */
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* News Item Card - Layout ngang (hình bên trái, nội dung bên phải) */
+.news-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+
+
+/* News Thumbnail - Hình vuông bên trái */
+.news-thumbnail {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin: 10px 0 10px 10px;
+}
+
+.news-thumbnail a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.news-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+
+
+/* News Content - Nội dung bên phải */
+.news-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+}
+
+.news-content h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 15px;
+    line-height: 1.4;
+}
+
+.news-content h2 a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+
+
+/* Excerpt */
+.news-content .excerpt {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.news-content .excerpt p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+/* Read More Button */
+.read-more-btn {
+    display: inline-block;
+    color: #ff6600;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: auto;
+    transition: color 0.3s ease;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .news-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .news-thumbnail {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .news-detail-thumb {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .share-box {
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 0;
+    }
+    
+    .share-btn {
+        width: 100%;
+    }
+    
+    .news-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-item {
+        flex-direction: column;
+    }
+    
+    .news-thumbnail {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .news-section-title {
+        font-size: 24px;
+    }
+    
+    .news-detail-content {
+        padding: 20px;
+    }
+}
+

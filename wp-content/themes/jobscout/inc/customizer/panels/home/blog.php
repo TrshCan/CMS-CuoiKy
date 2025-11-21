@@ -43,7 +43,7 @@ function jobscout_customize_register_frontpage_blog( $wp_customize ){
     $wp_customize->add_setting(
         'blog_section_title',
         array(
-            'default'           => __( 'Latest Articles', 'jobscout' ),
+            'default'           => __( 'NEWEST BLOG ENTRIES', 'jobscout' ),
             'sanitize_callback' => 'sanitize_text_field',
             'transport'         => 'postMessage'
         )

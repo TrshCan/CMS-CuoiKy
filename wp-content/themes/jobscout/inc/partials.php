@@ -89,7 +89,7 @@ function jobscout_get_popular_section_title(){
  * Job Posting Section Title
 */
 function jobscout_get_job_posting_section_title(){
-    $job_posting_section_title = get_theme_mod( 'job_posting_section_title', __( 'Job Posting', 'jobscout' ) );
+    $job_posting_section_title = get_theme_mod( 'job_posting_section_title', __( 'Top Job', 'jobscout' ) );
 
     if ( $job_posting_section_title ){
         return esc_html( $job_posting_section_title );
@@ -102,7 +102,7 @@ function jobscout_get_job_posting_section_title(){
  * Blog Section Title
 */
 function jobscout_get_blog_section_title(){
-    $blog_section_title = get_theme_mod( 'blog_section_title', __( 'Latest Articles', 'jobscout' ) );
+    $blog_section_title = get_theme_mod( 'blog_section_title', __( 'NEWEST BLOG ENTRIES', 'jobscout' ) );
 
     if ( $blog_section_title ){
         return esc_html( $blog_section_title );
@@ -114,15 +114,15 @@ function jobscout_get_blog_section_title(){
 /**
  * Blog Section Description
 */
-function jobscout_get_blog_section_description(){
-    $blog_section_subtitle = get_theme_mod( 'blog_section_subtitle', __( 'We will help you find it. We are your first step to becoming everything you want to be.', 'jobscout' ) );
-
-    if ( $blog_section_subtitle ){
-        return wpautop( wp_kses_post( $blog_section_subtitle ) );
-    } else {
-        return false;
-    }
-}
+//function jobscout_get_blog_section_description(){
+//    $blog_section_subtitle = get_theme_mod( 'blog_section_subtitle', __( 'We will help you find it. We are your first step to becoming everything you want to be.', 'jobscout' ) );
+//
+//    if ( $blog_section_subtitle ){
+//        return wpautop( wp_kses_post( $blog_section_subtitle ) );
+//    } else {
+//        return false;
+//    }
+//}
 
 /**
  * Blog View All Button
@@ -190,38 +190,13 @@ function jobscout_get_author_title(){
 }
 
 if( ! function_exists( 'jobscout_get_footer_copyright' ) ) :
-/**
- * Footer Copyright
-*/
-function jobscout_get_footer_copyright(){
-    $copyright = get_theme_mod( 'footer_copyright' );
-    echo '<span class="copyright-text">';
-    if( $copyright ){
-        echo wp_kses_post( $copyright );
-    }else{
-        esc_html_e( '&copy; Copyright ', 'jobscout' );
-        echo date_i18n( esc_html__( 'Y', 'jobscout' ) );
-        echo ' <a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a>. ';
-        esc_html_e( 'All Rights Reserved. ', 'jobscout' );
+    /**
+     * Footer Copyright - chỉ hiển thị © năm Copyright
+    */
+    function jobscout_get_footer_copyright(){
+        echo '<span class="copyright-text">';
+        echo '&copy; ' . date_i18n( 'Y' ) . ' - CopyRight';
+        echo '</span>';
     }
-    echo '</span>';
-}
-endif;
-
-if( ! function_exists( 'jobscout_ed_author_link' ) ) :
-/**
- * Show/Hide Author link in footer
-*/
-function jobscout_ed_author_link(){
-    echo esc_html__( 'JobScout | Developed By ', 'jobscout' ) . '<a class="author-link" href="' . esc_url( 'https://rarathemes.com/' ) .'" rel="nofollow" target="_blank">' . esc_html__( 'Rara Theme', 'jobscout' ) . '</a>.';
-}
-endif;
-
-if( ! function_exists( 'jobscout_ed_wp_link' ) ) :
-/**
- * Show/Hide WordPress link in footer
-*/
-function jobscout_ed_wp_link(){
-     printf( esc_html__( ' Powered by %s', 'jobscout' ), '<a class="wp-link" href="'. esc_url( __( 'https://wordpress.org/', 'jobscout' ) ) .'" target="_blank">WordPress</a>.' );
-}
-endif;
+    endif;
+    if( ! function_exists( 'jobscout_ed_author_link' ) ) : function jobscout_ed_author_link(){} endif; if( ! function_exists( 'jobscout_ed_wp_link' ) ) : function jobscout_ed_wp_link(){} endif;
