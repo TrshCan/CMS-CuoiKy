@@ -142,5 +142,44 @@ function news_banner_customizer( $wp_customize ) {
         'label'   => __( 'Banner Image', 'jobscout' ),
         'section' => 'news_page_banner_section',
     )));
+
+    $wp_customize->add_section( 'job_page_banner_section', array(
+        'title'    => __( 'Job Page Banner', 'jobscout' ),
+        'panel'    => 'custom_page_banner',
+        'priority' => 20,
+    ));
+
+    // Title
+    $wp_customize->add_setting( 'job_banner_title', array(
+        'default'           => 'Find Your Dream Job',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control( 'job_banner_title', array(
+        'label'   => __( 'Banner Title', 'jobscout' ),
+        'section' => 'job_page_banner_section',
+        'type'    => 'text',
+    ));
+
+    // Subtitle
+    $wp_customize->add_setting( 'job_banner_subtitle', array(
+        'default'           => 'Explore the best job opportunities.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control( 'job_banner_subtitle', array(
+        'label'   => __( 'Banner Subtitle', 'jobscout' ),
+        'section' => 'job_page_banner_section',
+        'type'    => 'text',
+    ));
+
+    // Image
+    $wp_customize->add_setting( 'job_banner_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'job_banner_image', array(
+        'label'   => __( 'Banner Image', 'jobscout' ),
+        'section' => 'job_page_banner_section',
+    )));
 }
+
 add_action( 'customize_register', 'news_banner_customizer' );

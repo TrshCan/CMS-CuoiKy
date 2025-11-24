@@ -12,13 +12,13 @@ if (function_exists('yoast_breadcrumb')) {
 }
 
 // Lấy các setting banner từ Customizer
-$banner_title    = get_theme_mod( 'news_banner_title', 'Latest News' );
-$banner_image    = get_theme_mod( 'news_banner_image' );
+$banner_title    = get_theme_mod( 'job_banner_title', 'Latest News' );
+$banner_image    = get_theme_mod( 'job_banner_image' );
 $blog_section_title = get_theme_mod( 'blog_section_title', __( 'NEWEST BLOG ENTRIES', 'jobscout' ) );
 ?>
 <!-- Custom News Banner -->
 <?php if ( $banner_image ) : ?>
-<div id="news-banner" class="news-banner" style="background-image: url('<?php echo esc_url( $banner_image ); ?>');">
+<div id="job-banner" class="job-banner" style="background-image: url('<?php echo esc_url( $banner_image ); ?>');">
     <div class="banner-caption">
         <div class="caption-inner">
             <h1 class="title"><?php echo esc_html( $banner_title ); ?></h1>

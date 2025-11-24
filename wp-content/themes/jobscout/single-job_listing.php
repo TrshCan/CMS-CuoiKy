@@ -51,7 +51,7 @@ while ( have_posts() ) : the_post();
         <nav class="job-breadcrumb">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="breadcrumb-link">Home</a>
             <span class="breadcrumb-separator">/</span>
-            <a href="<?php echo esc_url( home_url( '/all-jobs' ) ); ?>" class="breadcrumb-link">All Jobs</a>
+            <a href="<?php echo esc_url( home_url( '/jobs' ) ); ?>" class="breadcrumb-link">All Jobs</a>
             <span class="breadcrumb-separator">/</span>
             <span class="breadcrumb-current"><?php the_title(); ?></span>
         </nav>
