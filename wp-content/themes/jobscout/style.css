@@ -1856,8 +1856,8 @@ SIDEBARS
 }
 
 .rightsidebar #primary {
-  float: left;
-  width: 75%;
+  float: middle;
+  width: 100%;
   padding-right: 40px;
 }
 
@@ -2617,6 +2617,7 @@ section.top-job-section .section-title {
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .top-job-section .row div.job_listings article,
@@ -5869,209 +5870,7 @@ PAGE TEMPLATE LOGIN REGISTER
 /*==========================
 JOB LISTING PAGE
 ==========================*/
-.site-main .entry-content div.job_listings div.job_listings article {
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
-  margin-bottom: 25px;
-  border-radius: 5px;
-  padding: 30px;
-  position: relative;
-  display: flex;
 
-  flex-wrap: wrap;
-  overflow: hidden;
-  align-items: flex-start;
-}
-
-.site-main .entry-content .job-listing-card {
-  margin: auto !important;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .company-logo {
-  width: 100px;
-  margin: 0;
-  background: #eeeeee;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .job-title-wrap {
-  width: calc(100% - 100px);
-  padding-left: 20px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 1.1112em;
-  line-height: 1.45em;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .company-name {
-  font-size: 0.8888em;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 400;
-  line-height: 1.44em;
-  margin-top: 5px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .company-name:before {
-  content: "@";
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 15px;
-  padding-top: 15px;
-  font-size: 1em;
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt,
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address {
-  font-size: 0.8888em;
-  line-height: 1.44em;
-  font-weight: 400;
-  margin-bottom: 5px;
-  margin-right: 40px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .salary-amt .currency {
-  font-weight: 900;
-  color: #2ace5e;
-  margin-right: 5px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .company-address svg {
-  color: #2ace5e;
-  margin-right: 5px;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta a {
-  color: #000;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta a:hover {
-  color: #2ace5e;
-}
-
-.site-main .entry-content div.job_listings div.job_listings article .entry-meta .job-type {
-  margin-top: 0;
-  margin-left: auto;
-  display: table;
-}
-
-div.job_listings .load_more_jobs {
-  display: table;
-  border: 1px solid #EA751E;
-  text-transform: uppercase;
-  font-size: 0.7778em;
-  font-weight: 400;
-  background: transparent;
-  color: #EA751E;
-  padding: 15px 20px;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  clear: both;
-}
-
-div.job_listings .load_more_jobs:hover,
-div.job_listings .load_more_jobs:focus {
-  background: transparent;
-  color: #EA751E;
-  border-color: #EA751E;
-}
-
-.site-main .job_listings .jobscout_job_filters {
-  background: #f5f5f5;
-  margin-bottom: 60px;
-  margin-top: 20px;
-}
-
-.site-main .job_listings .jobscout_job_filters .search_jobs {
-  padding: 30px;
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.jobscout_job_filters .search_jobs div.filter_first,
-.jobscout_job_filters .search_jobs div.search_keywords,
-.jobscout_job_filters .search_jobs div.filter_last,
-.jobscout_job_filters .search_jobs div.search_location {
-  float: none;
-  width: auto;
-  flex: 1;
-}
-
-.jobscout_job_filters .search_jobs div.filter_wide,
-.jobscout_job_filters .search_jobs div.search_categories {
-  width: auto;
-  padding-left: 1em;
-  padding-top: 0;
-  flex: 1;
-}
-
-.chosen-container {
-  font-size: 1em;
-}
-
-.chosen-container-single .chosen-single {
-  background: #fff;
-  box-shadow: none;
-  height: 50px;
-  line-height: 50px;
-  border-color: #e6e6e6;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 0.8888em;
-}
-
-.chosen-container-single .chosen-single div {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.chosen-container-single .chosen-single div b {
-  height: 20px;
-  width: 15px;
-}
-
-.chosen-container-active.chosen-with-drop .chosen-single {
-  background: #fff;
-  border-color: #e6e6e6;
-}
-
-.chosen-container .chosen-drop {
-  border-color: #e6e6e6;
-}
-
-.chosen-container-single .chosen-search input[type="text"] {
-  height: 40px;
-  border-color: #e6e6e6;
-  border-radius: 5px;
-}
-
-.chosen-container .chosen-results {
-  font-size: 0.8888em;
-}
-
-.chosen-container .chosen-results li {
-  margin-bottom: 10px;
-}
-
-.jobscout_job_filters .job_types {
-  padding: 10px 20px;
-}
-
-.jobscout_job_filters .job_types li input[type="checkbox"] {
-  margin-right: 5px;
-}
 
 /*=============================
 DASHBOARD PAGE
@@ -7480,6 +7279,28 @@ SITE BANNER
   /*=======================
 	JOB LISTING PAGE
 	=======================*/
+  #primary {
+    width: 100% !important;
+  }
+  /* Center search form and job listings on jobs page */
+  .site-main .entry-content .job_listings .job_filters {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .site-main .entry-content .job_listings .job_filters .search_jobs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .site-main .entry-content .job_listings > .job_listings {
+    margin: 0 auto;
+    justify-content: center;
+  }
+
   .site-main .job_listings .jobscout_job_filters .search_jobs {
     flex-direction: column;
   }
