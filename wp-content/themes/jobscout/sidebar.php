@@ -14,6 +14,3 @@ if ( ! $sidebar ){
 }
 ?>
 
-<aside id="secondary" class="widget-area" role="complementary" itemscope itemtype="https://schema.org/WPSideBar">
-	<?php dynamic_sidebar( $sidebar ); ?>
-</aside><!-- #secondary -->

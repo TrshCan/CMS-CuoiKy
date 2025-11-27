@@ -3555,6 +3555,7 @@ SEARCH PAGE
 ==========================*/
 .search .site-content>.page-header>.container {
   max-width: 400px;
+
 }
 
 .search .site-content>header.page-header .page-title {
@@ -5876,13 +5877,14 @@ JOB LISTING PAGE
   padding: 30px;
   position: relative;
   display: flex;
+
   flex-wrap: wrap;
   overflow: hidden;
   align-items: flex-start;
 }
 
 .site-main .entry-content .job-listing-card {
-  margin: 100px !important;
+  margin: auto !important;
 }
 
 .site-main .entry-content div.job_listings div.job_listings article .company-logo {
@@ -5892,7 +5894,7 @@ JOB LISTING PAGE
 }
 
 .site-main .entry-content div.job_listings div.job_listings article .job-title-wrap {
-  width: calc(100% - 200px);
+  width: calc(100% - 100px);
   padding-left: 20px;
 }
 
