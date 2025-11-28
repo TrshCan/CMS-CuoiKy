@@ -21,7 +21,7 @@ if ($post_slug) {
 
 <div class="job_listings">
 
-    <form class="jobscout_job_filters" method="GET" action="http://localhost/CMS-CuoiKy/jobs">
+    <form class="jobscout_job_filters" method="GET" action="http://localhost:8080/jobs">
         <div class="search_jobs">
 
             <div class="search_keywords">
@@ -29,12 +29,12 @@ if ($post_slug) {
                 <div class="input-wrapper">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path fill="currentColor"
-                              d="M10 2a8 8 0 015.29 13.71l4.5 4.5-1.42 1.42-4.5-4.5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/>
+                            d="M10 2a8 8 0 015.29 13.71l4.5 4.5-1.42 1.42-4.5-4.5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z" />
                     </svg>
 
 
                     <input type="text" id="search_keywords" name="search_keywords"
-                           placeholder="<?php esc_attr_e('Tìm kiếm theo công việc, công ty, kỹ năng', 'jobscout'); ?>">
+                        placeholder="<?php esc_attr_e('Tìm kiếm theo công việc, công ty, kỹ năng', 'jobscout'); ?>">
                 </div>
             </div>
 
@@ -43,7 +43,7 @@ if ($post_slug) {
                 <div class="input-wrapper">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path fill="currentColor"
-                              d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 112.5-2.5 2.5 2.5 0 01-2.5 2.5z"/>
+                            d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 112.5-2.5 2.5 2.5 0 01-2.5 2.5z" />
                     </svg>
                     <select id="search_location" name="search_location">
                         <option value=""><?php esc_html_e('Tất cả địa điểm', 'jobscout'); ?></option>
@@ -73,15 +73,16 @@ if ($post_slug) {
                     <label for="search_category"><?php esc_html_e('Job Category', 'jobscout'); ?></label>
                     <select id="search_category" class="robo-search-category" name="search_category">
                         <option value=""><?php _e('Select Job Category', 'jobscout'); ?></option>
-                        <?php foreach (get_job_listing_categories() as $jobcat) : ?>
-                            <option value="<?php echo esc_attr($jobcat->term_id); ?>"><?php echo esc_html($jobcat->name); ?></option>
+                        <?php foreach (get_job_listing_categories() as $jobcat): ?>
+                            <option value="<?php echo esc_attr($jobcat->term_id); ?>"><?php echo esc_html($jobcat->name); ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
             <?php } ?>
 
             <div class="search_submit">
-                <input type="submit" value="<?php esc_attr_e('Tìm việc', 'jobscout'); ?>"/>
+                <input type="submit" value="<?php esc_attr_e('Tìm việc', 'jobscout'); ?>" />
             </div>
 
         </div>

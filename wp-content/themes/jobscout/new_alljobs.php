@@ -393,33 +393,43 @@ $blog_section_title = get_theme_mod( 'blog_section_title', __( 'NEWEST BLOG ENTR
 }
 
 .job-details-bar {
+    background: #e8e8e8;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    align-items: center;
+    gap: 0;
+    font-size: 0.8888em;
+    width: fit-content;
 }
 
 .job-details-bar span {
     display: inline-block;
-    padding: 5px 12px;
-    font-size: 12px;
-    border-radius: 4px;
-    background: #e9ecef;
-    color: #495057;
 }
 
-.job-type-item {
-    background: #d1ecf1 !important;
-    color: #0c5460 !important;
-}
-
-.job-category-item {
-    background: #d4edda !important;
-    color: #155724 !important;
-}
-
+.job-type-item,
+.job-category-item,
 .recruit-area-item {
-    background: #fff3cd !important;
-    color: #856404 !important;
+    color: #000;
+    font-weight: 400;
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+    background: transparent !important;
+}
+
+.job-type-item:not(:last-child)::after,
+.job-category-item:not(:last-child)::after,
+.recruit-area-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 16px;
+    background: #000;
 }
 
 .job-short-description {

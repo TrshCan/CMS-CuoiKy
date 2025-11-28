@@ -1105,7 +1105,7 @@ body.custom-background .site {
 
 .container {
   margin: 0 auto;
-  max-width: 1170px;
+  max-width: 100vw;
 }
 
 .fallback-svg {
@@ -2765,6 +2765,7 @@ section.top-job-section .section-title {
   align-items: center;
   gap: 15px;
   font-size: 0.8888em;
+  width: fit-content;
 }
 
 .top-job-section .row div.job_listings article .job-details-bar .job-type-item,
