@@ -48,16 +48,29 @@ if ($post_slug) {
                     <select id="search_location" name="search_location">
                         <option value=""><?php esc_html_e('Tất cả địa điểm', 'jobscout'); ?></option>
                         <?php
+                        // Get default sort order from option
+                        $default_sort_order = get_option('job_location_default_sort_order', 'ASC');
+                        
                         // Get locations from custom taxonomy
                         $locations = get_terms(array(
                             'taxonomy'   => 'job_location',
                             'hide_empty' => false,
                             'orderby'    => 'name',
-                            'order'      => 'ASC',
+                            'order'      => $default_sort_order,
                         ));
 
                         if (!empty($locations) && !is_wp_error($locations)) {
+                            // Filter out disabled locations
+                            $enabled_locations = array();
                             foreach ($locations as $location) {
+                                $disabled = get_term_meta($location->term_id, 'job_location_disabled', true);
+                                if ('1' !== $disabled) {
+                                    $enabled_locations[] = $location;
+                                }
+                            }
+                            
+                            // Display enabled locations
+                            foreach ($enabled_locations as $location) {
                                 printf('<option value="%1$s">%2$s</option>', esc_attr($location->name), esc_html($location->name));
                             }
                         }
