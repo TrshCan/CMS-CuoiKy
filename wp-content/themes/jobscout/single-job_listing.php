@@ -91,8 +91,8 @@ while ( have_posts() ) : the_post();
             </div>
             
             <div class="job-header-actions">
-                <button class="btn-share">SHARE</button>
-                <button class="btn-apply">APPLY JOB</button>
+                <button class="btn-share" data-job-id="<?php echo esc_attr( get_the_ID() ); ?>">SHARE</button>
+                <button class="btn-apply" data-job-id="<?php echo esc_attr( get_the_ID() ); ?>">APPLY JOB</button>
             </div>
         </div>
         
@@ -202,6 +202,41 @@ while ( have_posts() ) : the_post();
                     </div>
                 </div>
             </aside>
+        </div>
+    </div>
+</div>
+
+<!-- Share Modal -->
+<div id="share-modal" class="share-modal">
+    <div class="share-modal-overlay"></div>
+    <div class="share-modal-content">
+        <div class="share-modal-header">
+            <h3>Share Job</h3>
+            <button class="share-modal-close">&times;</button>
+        </div>
+        <div class="share-modal-body">
+            <div class="share-options">
+                <a href="#" class="share-option" data-platform="facebook" title="Share on Facebook">
+                    <div class="share-icon facebook-icon">f</div>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="share-option" data-platform="youtube" title="Share on YouTube">
+                    <div class="share-icon youtube-icon">▶</div>
+                    <span>YouTube</span>
+                </a>
+                <a href="#" class="share-option" data-platform="google" title="Share on Google">
+                    <div class="share-icon google-icon">G+</div>
+                    <span>Google</span>
+                </a>
+                <a href="#" class="share-option" data-platform="email" title="Share via Email">
+                    <div class="share-icon email-icon">@</div>
+                    <span>Email</span>
+                </a>
+                <a href="#" class="share-option" data-platform="copy" title="Copy Link">
+                    <div class="share-icon copy-icon">📋</div>
+                    <span>Copy Link</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -590,7 +625,380 @@ while ( have_posts() ) : the_post();
         font-size: 18px;
     }
 }
+
+/* Share Modal Styles */
+.share-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.share-modal.active {
+    display: block;
+}
+
+.share-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.share-modal-content {
+    position: relative;
+    background: #fff;
+    margin: 10% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.share-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.share-modal-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+}
+
+.share-modal-close {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.share-modal-close:hover {
+    color: #333;
+}
+
+.share-modal-body {
+    padding: 30px 25px;
+}
+
+.share-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.share-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    text-decoration: none;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: #fff;
+}
+
+.share-option:hover {
+    border-color: #ff6b35;
+    background: #fff5f2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.share-option span {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.share-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.facebook-icon {
+    background: #1877f2;
+}
+
+.youtube-icon {
+    background: #ff0000;
+}
+
+.google-icon {
+    background: #4285f4;
+}
+
+.email-icon {
+    background: #34a853;
+}
+
+.copy-icon {
+    background: #6c757d;
+}
+
+@media (max-width: 576px) {
+    .share-modal-content {
+        margin: 20% auto;
+        width: 95%;
+    }
+    
+    .share-options {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .share-option {
+        flex-direction: row;
+        padding: 20px;
+        text-align: left;
+    }
+    
+    .share-option span {
+        margin-top: 0;
+        margin-left: 15px;
+    }
+}
+
+/* Copy Notification */
+.copy-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #28a745;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10001;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.copy-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
 </style>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    var currentUrl = window.location.href;
+    var jobTitle = '<?php echo esc_js( get_the_title() ); ?>';
+    
+    // Share button - Open modal
+    $('.btn-share').on('click', function(e) {
+        e.preventDefault();
+        $('#share-modal').addClass('active');
+        $('body').css('overflow', 'hidden');
+    });
+    
+    // Close modal
+    $('.share-modal-close, .share-modal-overlay').on('click', function(e) {
+        e.preventDefault();
+        $('#share-modal').removeClass('active');
+        $('body').css('overflow', '');
+    });
+    
+    // Close modal on Escape key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#share-modal').hasClass('active')) {
+            $('#share-modal').removeClass('active');
+            $('body').css('overflow', '');
+        }
+    });
+    
+    // Handle share options
+    $('.share-option').on('click', function(e) {
+        e.preventDefault();
+        var platform = $(this).data('platform');
+        var shareUrl = encodeURIComponent(currentUrl);
+        var shareTitle = encodeURIComponent(jobTitle);
+        var shareWindow = '';
+        
+        switch(platform) {
+            case 'facebook':
+                shareWindow = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
+                window.open(shareWindow, 'facebook-share', 'width=600,height=400');
+                break;
+                
+            case 'youtube':
+                // YouTube doesn't have a direct share, but we can open YouTube with search
+                shareWindow = 'https://www.youtube.com/results?search_query=' + shareTitle;
+                window.open(shareWindow, 'youtube-share', 'width=800,height=600');
+                break;
+                
+            case 'google':
+                // Google+ is deprecated, using Google Bookmarks or general share
+                shareWindow = 'https://www.google.com/bookmarks/mark?op=edit&bkmk=' + shareUrl + '&title=' + shareTitle;
+                window.open(shareWindow, 'google-share', 'width=600,height=400');
+                break;
+                
+            case 'email':
+                var emailSubject = encodeURIComponent('Check out this job: ' + jobTitle);
+                var emailBody = encodeURIComponent('I found this job that might interest you:\n\n' + jobTitle + '\n' + currentUrl);
+                shareWindow = 'mailto:?subject=' + emailSubject + '&body=' + emailBody;
+                window.location.href = shareWindow;
+                break;
+                
+            case 'copy':
+                copyToClipboard(currentUrl);
+                $('#share-modal').removeClass('active');
+                $('body').css('overflow', '');
+                return false;
+        }
+    });
+    
+    // Copy to clipboard function
+    function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(function() {
+                showCopySuccess();
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                fallbackCopyTextToClipboard(text);
+            });
+        } else {
+            fallbackCopyTextToClipboard(text);
+        }
+    }
+    
+    // Fallback function for copying text
+    function fallbackCopyTextToClipboard(text) {
+        var textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            var successful = document.execCommand('copy');
+            if (successful) {
+                showCopySuccess();
+            } else {
+                alert('Unable to copy URL. Please copy manually: ' + text);
+            }
+        } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+            alert('Unable to copy URL. Please copy manually: ' + text);
+        }
+        
+        document.body.removeChild(textArea);
+    }
+    
+    // Show copy success message
+    function showCopySuccess() {
+        // Create a temporary notification
+        var $notification = $('<div class="copy-notification">Link copied to clipboard!</div>');
+        $('body').append($notification);
+        setTimeout(function() {
+            $notification.addClass('show');
+        }, 100);
+        
+        setTimeout(function() {
+            $notification.removeClass('show');
+            setTimeout(function() {
+                $notification.remove();
+            }, 300);
+        }, 2000);
+    }
+    
+    // Apply button - Increment apply clicks
+    $('.btn-apply').on('click', function(e) {
+        e.preventDefault();
+        var $btn = $(this);
+        var jobId = $btn.data('job-id');
+        
+        // Disable button to prevent multiple clicks
+        $btn.prop('disabled', true);
+        var originalText = $btn.text();
+        $btn.text('APPLYING...');
+        
+        // Make AJAX request
+        $.ajax({
+            url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+            type: 'POST',
+            data: {
+                action: 'jobscout_increment_apply_clicks',
+                job_id: jobId,
+                nonce: '<?php echo wp_create_nonce( 'jobscout_apply_nonce' ); ?>'
+            },
+            success: function(response) {
+                if (response.success) {
+                    $btn.text('APPLIED!');
+                    $btn.css('background', '#28a745');
+                    $btn.css('border-color', '#28a745');
+                    $btn.css('color', '#fff');
+                    
+                    // Re-enable button after 2 seconds
+                    setTimeout(function() {
+                        $btn.prop('disabled', false);
+                        $btn.text(originalText);
+                        $btn.css('background', 'transparent');
+                        $btn.css('border-color', '#ff6b35');
+                        $btn.css('color', '#ff6b35');
+                    }, 2000);
+                } else {
+                    alert('Error: ' + (response.data || 'Failed to record application'));
+                    $btn.prop('disabled', false);
+                    $btn.text(originalText);
+                }
+            },
+            error: function() {
+                alert('Error: Failed to record application. Please try again.');
+                $btn.prop('disabled', false);
+                $btn.text(originalText);
+            }
+        });
+    });
+});
+</script>
 
 <?php
 endwhile; // End of the loop.

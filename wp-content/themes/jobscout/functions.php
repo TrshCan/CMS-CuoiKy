@@ -571,3 +571,38 @@ function jobscout_job_location_bulk_actions_script( $hook ) {
     <?php
 }
 add_action( 'admin_footer', 'jobscout_job_location_bulk_actions_script' );
+
+/**
+ * AJAX handler to increment apply clicks for a job
+ */
+function jobscout_increment_apply_clicks() {
+    // Verify nonce
+    if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'jobscout_apply_nonce' ) ) {
+        wp_send_json_error( array( 'message' => 'Security check failed.' ) );
+    }
+
+    // Get job ID
+    $job_id = isset( $_POST['job_id'] ) ? intval( $_POST['job_id'] ) : 0;
+    
+    if ( ! $job_id || get_post_type( $job_id ) !== 'job_listing' ) {
+        wp_send_json_error( array( 'message' => 'Invalid job ID.' ) );
+    }
+
+    // Get current apply clicks count
+    $current_clicks = get_post_meta( $job_id, '_apply_clicks', true );
+    $current_clicks = $current_clicks ? intval( $current_clicks ) : 0;
+    
+    // Increment by 1
+    $new_clicks = $current_clicks + 1;
+    
+    // Update post meta
+    update_post_meta( $job_id, '_apply_clicks', $new_clicks );
+    
+    // Send success response
+    wp_send_json_success( array( 
+        'message' => 'Apply click recorded successfully.',
+        'clicks' => $new_clicks
+    ) );
+}
+add_action( 'wp_ajax_jobscout_increment_apply_clicks', 'jobscout_increment_apply_clicks' );
+add_action( 'wp_ajax_nopriv_jobscout_increment_apply_clicks', 'jobscout_increment_apply_clicks' );
