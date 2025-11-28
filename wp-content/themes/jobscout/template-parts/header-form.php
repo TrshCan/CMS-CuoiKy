@@ -48,18 +48,17 @@ if ($post_slug) {
                     <select id="search_location" name="search_location">
                         <option value=""><?php esc_html_e('Tất cả địa điểm', 'jobscout'); ?></option>
                         <?php
-                        global $wpdb;
-                        $locations = $wpdb->get_col("
-        SELECT DISTINCT meta_value 
-        FROM {$wpdb->postmeta}
-        WHERE meta_key = '_job_location'
-        AND meta_value != ''
-        ORDER BY meta_value ASC
-    ");
+                        // Get locations from custom taxonomy
+                        $locations = get_terms(array(
+                            'taxonomy'   => 'job_location',
+                            'hide_empty' => false,
+                            'orderby'    => 'name',
+                            'order'      => 'ASC',
+                        ));
 
-                        if (!empty($locations)) {
-                            foreach ($locations as $loc) {
-                                printf('<option value="%1$s">%2$s</option>', esc_attr($loc), esc_html($loc));
+                        if (!empty($locations) && !is_wp_error($locations)) {
+                            foreach ($locations as $location) {
+                                printf('<option value="%1$s">%2$s</option>', esc_attr($location->name), esc_html($location->name));
                             }
                         }
                         ?>

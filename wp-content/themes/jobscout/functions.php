@@ -183,3 +183,44 @@ function news_banner_customizer( $wp_customize ) {
 }
 
 add_action( 'customize_register', 'news_banner_customizer' );
+
+/**
+ * Register custom taxonomy for Job Locations
+ * This allows admins to manage locations from the admin menu
+ */
+function jobscout_register_job_locations_taxonomy() {
+    // Only register if WP Job Manager is active
+    if ( ! function_exists( 'jobscout_is_wp_job_manager_activated' ) || ! jobscout_is_wp_job_manager_activated() ) {
+        return;
+    }
+
+    $labels = array(
+        'name'              => _x( 'Job Locations', 'taxonomy general name', 'jobscout' ),
+        'singular_name'     => _x( 'Job Location', 'taxonomy singular name', 'jobscout' ),
+        'search_items'      => __( 'Search Locations', 'jobscout' ),
+        'all_items'         => __( 'All Locations', 'jobscout' ),
+        'parent_item'       => __( 'Parent Location', 'jobscout' ),
+        'parent_item_colon' => __( 'Parent Location:', 'jobscout' ),
+        'edit_item'         => __( 'Edit Location', 'jobscout' ),
+        'update_item'       => __( 'Update Location', 'jobscout' ),
+        'add_new_item'      => __( 'Add New Location', 'jobscout' ),
+        'new_item_name'     => __( 'New Location Name', 'jobscout' ),
+        'menu_name'         => __( 'Locations', 'jobscout' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true, // Allow parent/child relationships
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'job-location' ),
+        'show_in_menu'      => true,
+        'show_in_nav_menus' => false,
+        'public'            => false,
+        'publicly_queryable' => true,
+    );
+
+    register_taxonomy( 'job_location', array( 'job_listing' ), $args );
+}
+add_action( 'init', 'jobscout_register_job_locations_taxonomy', 0 );
