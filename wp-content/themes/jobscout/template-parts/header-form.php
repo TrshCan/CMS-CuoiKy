@@ -49,13 +49,18 @@ if ($post_slug) {
                         <option value=""><?php esc_html_e('Tất cả địa điểm', 'jobscout'); ?></option>
                         <?php
                         global $wpdb;
-                        $locations = $wpdb->get_col("
-        SELECT DISTINCT meta_value 
-        FROM {$wpdb->postmeta}
-        WHERE meta_key = '_job_location'
-        AND meta_value != ''
-        ORDER BY meta_value ASC
-    ");
+                        $locations = $wpdb->get_col($wpdb->prepare("
+                            SELECT DISTINCT pm.meta_value 
+                            FROM {$wpdb->postmeta} pm
+                            INNER JOIN {$wpdb->posts} p ON pm.post_id = p.ID
+                            WHERE pm.meta_key = '_job_location'
+                            AND pm.meta_value != ''
+                            AND pm.meta_value NOT LIKE %s
+                            AND p.post_type = 'job_listing'
+                            AND p.post_status = 'publish'
+                            ORDER BY pm.meta_value DESC
+                            LIMIT 10
+                        ", 'U%'));
 
                         if (!empty($locations)) {
                             foreach ($locations as $loc) {
