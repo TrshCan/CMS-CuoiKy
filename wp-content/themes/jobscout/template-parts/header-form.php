@@ -48,30 +48,23 @@ if ($post_slug) {
                     <select id="search_location" name="search_location">
                         <option value=""><?php esc_html_e('Tất cả địa điểm', 'jobscout'); ?></option>
                         <?php
-                        // Get default sort order from option
-                        $default_sort_order = get_option('job_location_default_sort_order', 'ASC');
-                        
-                        // Get locations from custom taxonomy
-                        $locations = get_terms(array(
-                            'taxonomy'   => 'job_location',
-                            'hide_empty' => false,
-                            'orderby'    => 'name',
-                            'order'      => $default_sort_order,
-                        ));
+                        global $wpdb;
+                        $locations = $wpdb->get_col($wpdb->prepare("
+                            SELECT DISTINCT pm.meta_value 
+                            FROM {$wpdb->postmeta} pm
+                            INNER JOIN {$wpdb->posts} p ON pm.post_id = p.ID
+                            WHERE pm.meta_key = '_job_location'
+                            AND pm.meta_value != ''
+                            AND pm.meta_value NOT LIKE %s
+                            AND p.post_type = 'job_listing'
+                            AND p.post_status = 'publish'
+                            ORDER BY pm.meta_value DESC
+                            LIMIT 10
+                        ", 'U%'));
 
-                        if (!empty($locations) && !is_wp_error($locations)) {
-                            // Filter out disabled locations
-                            $enabled_locations = array();
-                            foreach ($locations as $location) {
-                                $disabled = get_term_meta($location->term_id, 'job_location_disabled', true);
-                                if ('1' !== $disabled) {
-                                    $enabled_locations[] = $location;
-                                }
-                            }
-                            
-                            // Display enabled locations
-                            foreach ($enabled_locations as $location) {
-                                printf('<option value="%1$s">%2$s</option>', esc_attr($location->name), esc_html($location->name));
+                        if (!empty($locations)) {
+                            foreach ($locations as $loc) {
+                                printf('<option value="%1$s">%2$s</option>', esc_attr($loc), esc_html($loc));
                             }
                         }
                         ?>
